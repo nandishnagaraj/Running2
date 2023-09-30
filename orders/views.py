@@ -56,7 +56,7 @@ def payments(request):
     # send pdf to customer
     template_path = 'plantemplates/templateplan.html'
     template = get_template(template_path)
-    context = {}  # Add the necessary context for your template
+    context = {'customerorder':order}  # Add the necessary context for your template
     html = template.render(context)
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'filename="products_report.pdf"'
