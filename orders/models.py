@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import Account
 from store.models import Product, Variation
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Payment(models.Model):
@@ -31,11 +31,10 @@ class Order(models.Model):
     last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=50)
-    timings = models.DurationField
+    timings = models.IntegerField(validators=[MinValueValidator(12), MaxValueValidator(60)])
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
-    order_note = models.CharField(max_length=100, blank=True)
     order_total = models.FloatField()
     tax = models.FloatField()
     status = models.CharField(max_length=10, choices=STATUS, default='New')
@@ -44,12 +43,8 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
-
-    def full_address(self):
-        return f'{self.address_line_1} {self.address_line_2}'
 
     def __str__(self):
         return self.first_name

@@ -126,5 +126,19 @@
 </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const timingsInput = document.querySelector('input[name="timings"]');
 
+    timingsInput.addEventListener('input', function () {
+      const value = parseInt(timingsInput.value, 10);
+
+      if (isNaN(value) || value < 12 || value > 60) {
+        timingsInput.setCustomValidity('Please enter a numeric value between 12 to 60.');
+      } else {
+        timingsInput.setCustomValidity('');
+      }
+    });
+  });
+</script>
 {% endblock %}
