@@ -18,14 +18,14 @@
         <i class="fa fa-bars"></i> All Available Plans
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="{% url 'store' %}">All Products </a>
+        <a class="dropdown-item" href="{% url 'store' %}">All Plans </a>
         {% for category in links %}
           <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }} </a>
         {% endfor %}
       </div>
     </div>  <!-- category-wrap.// -->
   </div> <!-- col.// -->
-  <a href="{% url 'store' %}" class="btn btn-outline-primary">Store</a>
+  <a href="{% url 'store' %}" class="btn btn-outline-primary">View All</a>
   <div class="col-lg  col-md-6 col-sm-12 col">
     <form action="{% url 'search' %}" class="search" method='GET'>
       <div class="input-group w-100">

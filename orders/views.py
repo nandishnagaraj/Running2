@@ -8,6 +8,8 @@ import json
 from store.models import Product
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 
 def payments(request):
@@ -51,6 +53,17 @@ def payments(request):
    # Clear cart
     CartItem.objects.filter(user=request.user).delete()
 
+    # send pdf to customer
+    template_path = 'plantemplates/templateplan.html'
+    template = get_template(template_path)
+    context = {}  # Add the necessary context for your template
+    html = template.render(context)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="products_report.pdf"'
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    if pisa_status.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+
     # Send order recieved email to customer
     mail_subject = 'Thank you for your order!'
     message = render_to_string('orders/order_recieved_email.html', {
@@ -59,6 +72,7 @@ def payments(request):
     })
     to_email = request.user.email
     send_email = EmailMessage(mail_subject, message, to=[to_email])
+    send_email.attach('products_report.pdf', response.content, 'application/pdf')
     send_email.send()
 
     # Send order number and transaction id back to sendData method via JsonResponse
