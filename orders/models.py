@@ -31,7 +31,8 @@ class Order(models.Model):
     last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=15)
     email = models.EmailField(max_length=50)
-    timings = models.IntegerField(validators=[MinValueValidator(12), MaxValueValidator(60)])
+    timingsinMinutes = models.IntegerField(validators=[MinValueValidator(12), MaxValueValidator(60)])
+    timingsinSeconds = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(59)])
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
@@ -48,6 +49,11 @@ class Order(models.Model):
 
     def __str__(self):
         return self.first_name
+    
+    def save(self, *args, **kwargs):
+        # Calculate timings from minutes and seconds
+        self.timings = self.timingsinMinutes * 60 + self.timingsinSeconds
+        super().save(*args, **kwargs)
 
 
 class OrderProduct(models.Model):

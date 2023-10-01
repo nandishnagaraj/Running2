@@ -52,9 +52,13 @@
       </div>
       <div class="form-row">
         <div class="col form-group">
-          <label for="">5KM Timings</label>
-          <input type="text" name="timings" class="form-control" required>
-        </div>                
+          <label for="">5KM Timings in minutes</label>
+          <input type="text" name="timingsinMinutes" class="form-control" required>
+        </div>
+        <div class="col form-group">
+          <label for="">Seconds</label>
+          <input type="text" name="timingsinSeconds" class="form-control" required>
+        </div>               
       </div>
       
 </div> <!-- card.// -->
@@ -128,15 +132,27 @@
 <!-- ========================= SECTION CONTENT END// ========================= -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const timingsInput = document.querySelector('input[name="timings"]');
+    const timingsInputinMinutes = document.querySelector('input[name="timingsinminutes"]');
+    const timingsInputinSeconds = document.querySelector('input[name="timingsinseconds"]');
 
-    timingsInput.addEventListener('input', function () {
-      const value = parseInt(timingsInput.value, 10);
+
+    timingsInputinMinutes.addEventListener('input', function () {
+      const value = parseInt(timingsInputinMinutes.value, 10);
 
       if (isNaN(value) || value < 12 || value > 60) {
-        timingsInput.setCustomValidity('Please enter a numeric value between 12 to 60.');
+        timingsInputinMinutes.setCustomValidity('Please enter a numeric value between 15 to 60 minutes.');
       } else {
-        timingsInput.setCustomValidity('');
+        timingsInputinMinutes.setCustomValidity('');
+      }
+    });
+
+    timingsInputinSeconds.addEventListener('input', function () {
+      const value = parseInt(timingsInputinSeconds.value, 10);
+
+      if (isNaN(value) || value < 0 || value > 59) {
+        timingsInputinSeconds.setCustomValidity('Please enter a numeric value between 0 to 59.');
+      } else {
+        timingsInputinSeconds.setCustomValidity('');
       }
     });
   });

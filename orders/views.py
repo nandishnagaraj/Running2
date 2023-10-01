@@ -11,7 +11,6 @@ from django.template.loader import render_to_string
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
-
 def payments(request):
     body = json.loads(request.body)
     order = Order.objects.get(user=request.user, is_ordered=False, order_number=body['orderID'])
@@ -46,34 +45,42 @@ def payments(request):
 
         cart_item = CartItem.objects.get(id=item.id)
         product_variation = cart_item.variations.all()
-        orderproduct = OrderProduct.objects.get(id=orderproduct.id)
+        orderproduct = OrderProduct.objects.get(id=orderproduct.id)        
         orderproduct.variations.set(product_variation)
         orderproduct.save()
+
+        for variation in product_variation:
+            # print("Variation Name:", variation.variation_value)
+            # print("Product:", orderproduct.product)
+            # print("Product Name:", orderproduct.product.product_name)        
+            template_path = 'plantemplates/5kmlevel1.html'
+            template = get_template(template_path)
+            context = {'customerorder':order}  # Add the necessary context for your template
+            html = template.render(context)
+            response = HttpResponse(content_type='application/pdf')
+            response['Content-Disposition'] = 'filename="5KM-runplan.pdf"'
+            pisa_status = pisa.CreatePDF(html, dest=response)
+            if pisa_status.err:
+                return HttpResponse('We had some errors <pre>' + html + '</pre>')
+
+            # Send order recieved email to customer
+            mail_subject = 'Thank you for your order!'
+            message = render_to_string('orders/order_recieved_email.html', {
+                'user': request.user,
+                'order': order,
+                'orderproduct':orderproduct,
+                'variationname':variation.variation_value,
+            })
+            to_email = request.user.email
+            send_email = EmailMessage(mail_subject, message, to=[to_email])
+            send_email.attach('products_report.pdf', response.content, 'application/pdf')
+            send_email.send()
 
    # Clear cart
     CartItem.objects.filter(user=request.user).delete()
 
     # send pdf to customer
-    template_path = 'plantemplates/templateplan.html'
-    template = get_template(template_path)
-    context = {'customerorder':order}  # Add the necessary context for your template
-    html = template.render(context)
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="products_report.pdf"'
-    pisa_status = pisa.CreatePDF(html, dest=response)
-    if pisa_status.err:
-        return HttpResponse('We had some errors <pre>' + html + '</pre>')
-
-    # Send order recieved email to customer
-    mail_subject = 'Thank you for your order!'
-    message = render_to_string('orders/order_recieved_email.html', {
-        'user': request.user,
-        'order': order,
-    })
-    to_email = request.user.email
-    send_email = EmailMessage(mail_subject, message, to=[to_email])
-    send_email.attach('products_report.pdf', response.content, 'application/pdf')
-    send_email.send()
+    
 
     # Send order number and transaction id back to sendData method via JsonResponse
     data = {
@@ -113,8 +120,9 @@ def place_order(request, total=0, quantity=0,):
             data.country = form.cleaned_data['country']
             data.state = form.cleaned_data['state']
             data.city = form.cleaned_data['city']
-            data.timings = form.cleaned_data['timings']
-            data.timings *= 60
+            data.timingsinMinutes = form.cleaned_data['timingsinMinutes']
+            data.timingsinSeconds = form.cleaned_data['timingsinSeconds']
+            data.timings = ((data.timingsinMinutes * 60) + data.timingsinSeconds)
             data.order_total = grand_total
             data.tax = tax
             data.ip = request.META.get('REMOTE_ADDR')
