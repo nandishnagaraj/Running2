@@ -52,13 +52,14 @@ def payments(request):
         for variation in product_variation:
             print("Variation Name:", variation.variation_value)
             print("Product:", orderproduct.product)
-            print("Product Name:", orderproduct.product.product_name)        
-            template_path = f"plantemplates/{orderproduct.product.product_name}{variation.variation_value}.html"
+            print("Product Name:", orderproduct.product.product_name)   
+            print("Coach name:",orderproduct.product.coach)     
+            template_path = f"plantemplates/{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.html"
             template = get_template(template_path)
             context = {'customerorder':order}  # Add the necessary context for your template
             html = template.render(context)
             response = HttpResponse(content_type='application/pdf')
-            response['Content-Disposition'] = f'attachment; filename="{orderproduct.product.product_name}{variation.variation_value}.pdf"'
+            response['Content-Disposition'] = f'attachment; filename="{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf"'
             pisa_status = pisa.CreatePDF(html, dest=response)
             if pisa_status.err:
                 return HttpResponse('We had some errors <pre>' + html + '</pre>')
@@ -73,7 +74,7 @@ def payments(request):
             })
             to_email = request.user.email
             send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.attach(f'{orderproduct.product.product_name}{variation.variation_value}.pdf', response.content, 'application/pdf')
+            send_email.attach(f'{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf', response.content, 'application/pdf')
             send_email.send()
 
    # Clear cart
