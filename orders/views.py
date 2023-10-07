@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
+import razorpay
 from carts.models import CartItem
 from .forms import OrderForm
 import datetime
@@ -10,6 +11,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+
 
 def payments(request):
     body = json.loads(request.body)
@@ -50,10 +52,7 @@ def payments(request):
         orderproduct.save()
 
         for variation in product_variation:
-            print("Variation Name:", variation.variation_value)
-            print("Product:", orderproduct.product)
-            print("Product Name:", orderproduct.product.product_name)   
-            print("Coach name:",orderproduct.product.coach)     
+             
             template_path = f"plantemplates/{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.html"
             template = get_template(template_path)
             context = {'customerorder':order}  # Add the necessary context for your template
@@ -138,6 +137,14 @@ def place_order(request, total=0, quantity=0,):
             data.order_number = order_number
             data.save()
 
+            client = razorpay.Client(auth=("rzp_test_yu3IOJAh3QwXPK", "S0EuAjAVYsMMprwVYx2LWjrU"))
+            print("Razor Pay",client)
+            payment = client.order.create({'amount': int(grand_total * 100), 'currency': 'INR','payment_capture': '1'})
+            print("Razor Pay payment ",payment)
+            payment_id = payment['id']
+
+            # Print or use the payment ID as needed
+            print("Payment ID:", payment_id)
             order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
             context = {
                 'order': order,
@@ -145,6 +152,8 @@ def place_order(request, total=0, quantity=0,):
                 'total': total,
                 'tax': tax,
                 'grand_total': grand_total,
+                'grand_total_razorpay': int(grand_total * 100),
+                'razorpayid': payment_id,
             }
             return render(request, 'orders/payments.html', context)
     else:
@@ -165,6 +174,34 @@ def order_complete(request):
 
         payment = Payment.objects.get(payment_id=transID)
 
+        context = {
+            'order': order,
+            'ordered_products': ordered_products,
+            'order_number': order.order_number,
+            'transID': payment.payment_id,
+            'payment': payment,
+            'subtotal': subtotal,
+        }
+        return render(request, 'orders/order_complete.html', context)
+    except (Payment.DoesNotExist, Order.DoesNotExist):
+        return redirect('home')
+    
+
+def order_in_razorpay(request):
+    order_number = request.GET.get('order_number')
+    transID = request.GET.get('payment_id')
+   
+
+    try:
+        order = Order.objects.get(order_number=order_number, is_ordered=True)
+        ordered_products = OrderProduct.objects.filter(order_id=order.id)
+
+        subtotal = 0
+        for i in ordered_products:
+            subtotal += i.product_price * i.quantity
+        
+        payment = Payment.objects.get(payment_id=transID)
+        
         context = {
             'order': order,
             'ordered_products': ordered_products,

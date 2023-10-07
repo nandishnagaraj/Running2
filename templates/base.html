@@ -38,6 +38,8 @@
 <!-- PayPal Script -->
 <script src="https://www.paypal.com/sdk/js?client-id=AfmCIFLalQ3Wvg-b1P5nSeasodJ9MU9O08cB1hKaTpmWY5IOI1DjK3erhNDHWcXLhQWm26IxpUcJrkOm&currency=USD"></script>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script type="text/javascript">
 /// some script
 
@@ -62,7 +64,14 @@ $(document).ready(function() {
     align-items: center;
     z-index: 9999; /* Ensure the loader is on top */
 }
-
+.short-description {
+    margin: 10 20px; /* Adjust the margin values as needed */
+    padding: 10px; /* Optional: Add padding for extra spacing */
+    text-align: justify;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+}
 .loader {
     text-align: center;
 }

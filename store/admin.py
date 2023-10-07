@@ -1,9 +1,14 @@
 from django.contrib import admin
 from .models import Product, Variation
+from ckeditor.widgets import CKEditorWidget
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('product_name', 'price', 'coach', 'category', 'modified_date', 'is_available')
     prepopulated_fields = {'slug': ('product_name',)}
+    formfield_overrides = {
+        Product.shortdescription: {'widget': CKEditorWidget},
+        Product.longdescription: {'widget': CKEditorWidget},
+    }
 
 
 class VariationAdmin(admin.ModelAdmin):

@@ -1,13 +1,15 @@
 from django.db import models
 from django.urls import reverse
 from category.models import Category
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
 class Product(models.Model):
     product_name    = models.CharField(max_length=200, unique=True)
     slug            = models.SlugField(max_length=200, unique=True)
-    description     = models.TextField(max_length=500, blank=True)
+    shortdescription     = RichTextField()
+    longdescription     = RichTextField()
     price           = models.IntegerField()
     images          = models.ImageField(upload_to='photos/products')
     coach           = models.CharField(max_length=500, blank=True, default='Generic')

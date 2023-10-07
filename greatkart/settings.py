@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'carts',
     'accounts',
     'orders',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,12 @@ EMAIL_HOST_PASSWORD = 'brrgedqkaqtsejnb'
 EMAIL_USE_TLS = True
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
+
+RAZOR_KEY_ID = 'rzp_test_yu3IOJAh3QwXPK'
+RAZOR_KEY_SECRET = 'S0EuAjAVYsMMprwVYx2LWjrU'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%',  # Adjust the width as needed
+    },
+}
