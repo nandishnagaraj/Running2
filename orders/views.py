@@ -137,14 +137,12 @@ def place_order(request, total=0, quantity=0,):
             data.order_number = order_number
             data.save()
 
-            client = razorpay.Client(auth=("rzp_test_yu3IOJAh3QwXPK", "S0EuAjAVYsMMprwVYx2LWjrU"))
-            print("Razor Pay",client)
-            payment = client.order.create({'amount': int(grand_total * 100), 'currency': 'INR','payment_capture': '1'})
-            print("Razor Pay payment ",payment)
+            client = razorpay.Client(auth=("rzp_test_yu3IOJAh3QwXPK", "S0EuAjAVYsMMprwVYx2LWjrU"))           
+            payment = client.order.create({'amount': int(grand_total * 100), 'currency': 'INR','payment_capture': '1'})            
             payment_id = payment['id']
 
             # Print or use the payment ID as needed
-            print("Payment ID:", payment_id)
+            
             order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
             context = {
                 'order': order,
@@ -187,29 +185,29 @@ def order_complete(request):
         return redirect('home')
     
 
-def order_in_razorpay(request):
-    order_number = request.GET.get('order_number')
-    transID = request.GET.get('payment_id')
+# def order_in_razorpay(request):
+#     order_number = request.GET.get('order_number')
+#     transID = request.GET.get('payment_id')
    
 
-    try:
-        order = Order.objects.get(order_number=order_number, is_ordered=True)
-        ordered_products = OrderProduct.objects.filter(order_id=order.id)
+#     try:
+#         order = Order.objects.get(order_number=order_number, is_ordered=True)
+#         ordered_products = OrderProduct.objects.filter(order_id=order.id)
 
-        subtotal = 0
-        for i in ordered_products:
-            subtotal += i.product_price * i.quantity
+#         subtotal = 0
+#         for i in ordered_products:
+#             subtotal += i.product_price * i.quantity
         
-        payment = Payment.objects.get(payment_id=transID)
+#         payment = Payment.objects.get(payment_id=transID)
         
-        context = {
-            'order': order,
-            'ordered_products': ordered_products,
-            'order_number': order.order_number,
-            'transID': payment.payment_id,
-            'payment': payment,
-            'subtotal': subtotal,
-        }
-        return render(request, 'orders/order_complete.html', context)
-    except (Payment.DoesNotExist, Order.DoesNotExist):
-        return redirect('home')
+#         context = {
+#             'order': order,
+#             'ordered_products': ordered_products,
+#             'order_number': order.order_number,
+#             'transID': payment.payment_id,
+#             'payment': payment,
+#             'subtotal': subtotal,
+#         }
+#         return render(request, 'orders/order_complete.html', context)
+#     except (Payment.DoesNotExist, Order.DoesNotExist):
+#         return redirect('home')

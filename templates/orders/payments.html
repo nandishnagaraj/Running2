@@ -255,12 +255,12 @@
         "key": "rzp_test_yu3IOJAh3QwXPK",
         "amount": "{{grand_total_razorpay}}", // Example amount in paise (e.g., 1000 paise = INR 10.00)
         "currency": "INR",
-        "name": "Professional Cipher",
-        "description": "Django and Data Science",
-        "image": "https://example.com/your_logo.jpg",
+        "name": "Nandish Kumar",
+        "description": "You Run Plans",
+        "image": "",
         "order_id": null, // Will be set dynamically
         "handler": function(response) {
-            console.log('Payment successful! Transaction ID:', response.razorpay_payment_id);
+            
 			var paymentIDRazorpay = response.razorpay_payment_id;
             // You can handle further actions here after a successful payment
 			fetch(url, {method: "POST",
