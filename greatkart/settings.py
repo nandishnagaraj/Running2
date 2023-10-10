@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-=mh-7fpw2b3hj0ud6#k1(6&@=&mlj=k7ui#lk7x&+&87j!a7*d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*",'35.200.218.117','8000-cs-32b5d815-588c-485e-97ea-9fd8f1263144.cs-asia-southeast1-bool.cloudshell.dev','127.0.0.1',]
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'greatkart.urls'
@@ -164,6 +169,8 @@ CKEDITOR_CONFIGS = {
 }
 
 CORS_ORIGIN_WHITELIST = [
-    'https://8000-cs-32b5d815-588c-485e-97ea-9fd8f1263144.cs-asia-southeast1-bool.cloudshell.dev',
+    'https://8000-cs-32b5d815-588c-485e-97ea-9fd8f1263144.cs-asia-southeast1-bool.cloudshell.dev','http://127.0.0.1',"*",
     # Add other allowed origins if needed
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-cs-32b5d815-588c-485e-97ea-9fd8f1263144.cs-asia-southeast1-bool.cloudshell.dev',]
