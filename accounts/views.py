@@ -16,6 +16,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
+from django.conf import settings
 
 from carts.views import _cart_id
 from carts.models import Cart, CartItem
@@ -43,7 +44,8 @@ def register(request):
             # profile.save()
 
             # USER ACTIVATION
-            current_site = get_current_site(request)
+            #current_site = get_current_site(request)
+            current_site = settings.SITE_DOMAIN
             mail_subject = 'Please activate your account'
             message = render_to_string('accounts/account_verification_email.html', {
                 'user': user,
