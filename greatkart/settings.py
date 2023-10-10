@@ -162,3 +162,8 @@ CKEDITOR_CONFIGS = {
         'width': '100%',  # Adjust the width as needed
     },
 }
+
+CORS_ORIGIN_WHITELIST = [
+    'https://8000-cs-32b5d815-588c-485e-97ea-9fd8f1263144.cs-asia-southeast1-bool.cloudshell.dev',
+    # Add other allowed origins if needed
+]
