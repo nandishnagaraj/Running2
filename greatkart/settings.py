@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'orders',
     'ckeditor',
+    'corsheaders',
     'django_cleanup.apps.CleanupConfig',
 ]
 
