@@ -40,4 +40,4 @@ google-auth==2.23.0
 urllib3<2.0
 webencodings>=0.5.1
 xhtml2pdf>=0.2.11
-jango-cors-headers>=4.2.0
+django-cors-headers>=4.2.0
