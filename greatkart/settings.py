@@ -170,8 +170,9 @@ CKEDITOR_CONFIGS = {
 }
 
 CORS_ORIGIN_WHITELIST = [
-    'https://34.100.136.162:8000,'http://127.0.0.1',"*",
-    # Add other allowed origins if needed
+    'https://34.100.136.162:8000',
+    'http://127.0.0.1',
+    '*',  # Allow all other origins
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://34.100.136.162:8000']
