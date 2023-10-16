@@ -170,8 +170,8 @@ CKEDITOR_CONFIGS = {
 }
 
 CORS_ORIGIN_WHITELIST = [
-    'https://8000-cs-32b5d815-588c-485e-97ea-9fd8f1263144.cs-asia-southeast1-bool.cloudshell.dev','http://127.0.0.1',"*",
+    'https://34.100.136.162:8000,'http://127.0.0.1',"*",
     # Add other allowed origins if needed
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-cs-32b5d815-588c-485e-97ea-9fd8f1263144.cs-asia-southeast1-bool.cloudshell.dev',]
+CSRF_TRUSTED_ORIGINS = ['https://34.100.136.162:8000']
