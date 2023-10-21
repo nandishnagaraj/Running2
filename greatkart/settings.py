@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=mh-7fpw2b3hj0ud6#k1(6&@=&mlj=k7ui#lk7x&+&87j!a7*d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*",'34.100.136.162','127.0.0.1',]
+ALLOWED_HOSTS = ["*",'34.93.95.35','127.0.0.1',]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -88,10 +88,21 @@ AUTH_USER_MODEL = 'accounts.Account'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'svedah',
+        'USER': 'nnk',
+        'PASSWORD': 'nnk',
+        'HOST': 'localhost',  # You can change this to the IP or hostname of your PostgreSQL server.
+        'PORT': '',           # Leave it empty for the default PostgreSQL port (5432).
     }
 }
 
@@ -170,7 +181,7 @@ CKEDITOR_CONFIGS = {
 }
 
 CORS_ORIGIN_WHITELIST = [
-    'https://34.100.136.162:8000'
+    'https://34.93.95.35:8000'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://34.100.136.162:8000']
+CSRF_TRUSTED_ORIGINS = ['https://34.93.95.35:8000']
