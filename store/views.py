@@ -8,7 +8,7 @@ from category.models import Category
 from django.db.models import Q
 from .forms import ReviewForm
 from django.contrib import messages
-
+from django.http import HttpResponse
 def store(request, category_slug=None):
     categories = None
     products = None
@@ -94,4 +94,19 @@ def submit_review(request, product_id):
                 data.save()
                 messages.success(request, 'Thank you! Your review has been submitted.')
                 return redirect(url)
+
+def downloadPDF(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+        # In this example, let's assume you have a 'pdf_file' field in your Product model
+    pdf_file = product.pdf_file
+
+    if pdf_file:
+            # Set the content type as application/pdf to tell the browser it's a PDF
+            response = HttpResponse(pdf_file.read(), content_type='application/pdf')
+            # Set the content disposition to 'attachment' to force download
+            response['Content-Disposition'] = f'attachment; filename="{product.product_name}.pdf"'
+            return response
+
+        # Handle the case where the PDF file is not available
+    return HttpResponse("PDF not available", status=404)
 

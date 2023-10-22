@@ -53,6 +53,10 @@ class Account(AbstractBaseUser):
     is_active        = models.BooleanField(default=False)
     is_superadmin        = models.BooleanField(default=False)
 
+    # is_coach = models.BooleanField(default=False)
+    # coach_photo = models.ImageField(upload_to='coach_photos/', blank=True, null=True)
+    # coach_description = models.TextField(blank=True, null=True)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
