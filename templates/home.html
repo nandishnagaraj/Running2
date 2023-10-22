@@ -14,7 +14,7 @@
             <div class="carousel-inner">
                 {% for image_path in image_paths %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                        <img src="{{ image_path }}" class="d-block w-100" alt="Image">
+                        <img src="{% static image_path %}" class="d-block w-100" alt="Image - {{ image_path }}">
                     </div>
                 {% endfor %}
             </div>
