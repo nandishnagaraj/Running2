@@ -4,7 +4,9 @@
 {% load static %}
 
 {% block content %}
-
+{% for image_path in image_paths %}
+    {{ image_path }}
+{% endfor %}
 
 
 <!-- ========================= SECTION MAIN ========================= -->
