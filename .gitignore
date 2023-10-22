@@ -1,2 +1,2 @@
 env/**
-dbsqli
+db.sqlite3
