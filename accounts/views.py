@@ -44,14 +44,15 @@ def register(request):
             # profile.save()
 
             # USER ACTIVATION
-            #current_site = get_current_site(request)
-            current_site = settings.SITE_DOMAIN
+            current_site = get_current_site(request)
+            # current_site = settings.SITE_DOMAIN
             mail_subject = 'Please activate your account'
             message = render_to_string('accounts/account_verification_email.html', {
                 'user': user,
                 'domain': current_site,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': default_token_generator.make_token(user),
+                
             })
             to_email = email
             send_email = EmailMessage(mail_subject, message, to=[to_email])
