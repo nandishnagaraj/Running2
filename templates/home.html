@@ -10,7 +10,7 @@
 <!-- ========================= SECTION MAIN ========================= -->
 <section class="section-intro padding-y-sm">
     <div class="container">
-        <div id="introCarousel" class="carousel slide" data-ride="carousel">
+        <div id="introCarousel" class="carousel slide" data-ride="carousel" style="height: 400px; overflow: hidden;">
             <div class="carousel-inner">
                 {% for image_path in image_paths %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -57,19 +57,31 @@
 </header><!-- sect-heading -->
 
 
-<div class="row">
+<div class="container h-100">
+    <div class="row align-left">
 	{% for product in products %}
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="{{ product.get_url }}" class="img-wrap"> <img src="{{ product.images.url }}"> </a>
-			<figcaption class="info-wrap">
-				<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-				<div class="price mt-1">₹ {{ product.price }}</div>
-				<small class="title text-muted">Coach - {{ product.coach }}</small>
-			</figcaption>
+	<div class="col-md-6 col-lg-3 column">
+		<div class="card gr-1">
+            <div class="txt">
+                <h1>{{ product.product_name }}</h1>
+                <p></p>
+              </div>
+              <div class="price mt-1">₹ {{ product.price }}</div>
+              <small class="title text-muted">Coach - {{ product.coach }}</small>
+              <a href="{{ product.get_url }}" style="font-family: Tahoma, sans-serif; font-size: 12px;">more...</a>           
+			<!-- <div class="img-wrap"> -->
+            
+				<!-- <img src="{{ product.images.url }}" class="product-image">
+				<div class="overlay-text  center-text" style="bottom: 30px; color: #63083d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+					<a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+					<div class="price mt-1">₹ {{ product.price }}</div>
+					<small class="title text-muted">Coach - {{ product.coach }}</small>
+				</div> -->
+			<!-- </div> -->
 		</div>
 	</div> <!-- col.// -->
 	{% endfor %}
+</div>
 </div> <!-- row.// -->
 
 </div><!-- container // -->
