@@ -10,7 +10,7 @@
       <img class="logo" src="{% static './images/logo.png' %}">
     </a> <!-- brand-wrap.// -->
   </div>
-  <div class="col-lg col-sm col-md">
+  <!-- <div class="col-lg col-sm col-md">
     <div class="category-wrap dropdown d-inline-block float-left">
       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-bars"></i> All Available Plans
@@ -21,13 +21,13 @@
           <a class="dropdown-item" href="{{ category.get_url }}">{{ category.category_name }} </a>
         {% endfor %}
       </div>
-    </div>  <!-- category-wrap.// -->
-  </div> <!-- col.// -->
-  <a href="{% url 'store' %}" class="btn btn-outline-primary d-inline-block float-left">View All</a>
+    </div>  
+  </div>  -->
+  <a href="{% url 'store' %}" class="btn btn-outline-primary d-inline-block float-left">View All Plans</a>
   <div class="col-lg-3 col-md-6 col-12 col">
     <form action="{% url 'search' %}" class="search d-inline-block float-left" method='GET'>
       <div class="input-group w-100">
-          <input type="text" class="form-control" style="width:60%;" placeholder="Search" name="keyword" required>
+          <input type="text" class="form-control" style="width:80%;" placeholder="Search" name="keyword" required>
           <div class="input-group-append">
             <button class="btn btn-primary" type="submit">
               <i class="fa fa-search"></i>
@@ -36,7 +36,7 @@
         </div>
     </form> <!-- search-wrap .end// -->
   </div> <!-- col.// -->
-  <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3 d-inline-block float-right">
+  <div class="col-lg-5 col-sm-8 col-8 order-2 order-lg-3 d-inline-block float-right">
         <div class="d-flex justify-content-end mb-3 mb-lg-0">
           {% if user.id is None %}
           <div class="widget-header">
