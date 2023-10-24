@@ -53,7 +53,8 @@ $(document).ready(function() {
 </script>
 
 <style>
-  #loader-overlay {
+
+#loader-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -162,6 +163,7 @@ $(document).ready(function() {
   }
 }
 .card{
+  margin-bottom: 20px;
   min-height:170px;
   margin: 0;
   padding: 1.7rem 1.2rem;
@@ -233,6 +235,44 @@ $(document).ready(function() {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.frame-with-shadow {
+    width: 100%;
+    height: 100px; /* Adjust the height as needed */
+    background: linear-gradient(135deg, #ffffff, #ccccc7); /* Add a gradient background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a drop shadow */
+    border-radius: 5px; /* Add rounded corners if desired */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    color: #fff; /* Text color on the gradient background */
+}
+
+.product-title {
+    background: linear-gradient(135deg, #f52828, #363634); /* Add a gradient background for the title */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 0;
+}
+
+.frame-with-shadow-cart{
+    width: 80px; /* Set the desired width */
+    height: 80px; /* Set the desired height */
+    background: linear-gradient(135deg, #ffffff, #ccccc7);/* Set the background color you prefer */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a drop shadow */
+    border-radius: 5px; /* Add rounded corners if desired */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
 }
 </style>
 

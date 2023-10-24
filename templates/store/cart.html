@@ -32,10 +32,14 @@
 <tr>
 	<td>
 		<figure class="itemside align-items-center">
-			<div class="aside"><a href="{{ cart_item.product.get_url }}"><img src="{{cart_item.product.images.url}}" class="img-sm"></a></div>
+			<div class="aside">
+				<div class="frame-with-shadow-cart">
+					<a href="{{ cart_item.product.get_url }}" class="product-title">{{ cart_item.product.product_name }}</a>
+				</div>
+			</div>
 			<figcaption class="info">
-				<a href="{{ cart_item.product.get_url }}" class="title text-dark">{{cart_item.product.product_name}}</a>
-				<p class="text-muted small">Coach : {{cart_item.product.coach}}</p>
+				
+				<p class="text-muted small">Coach : {{ cart_item.product.coach }}</p>
 				<p class="text-muted small">
 					{% if cart_item.variations.all %}
 						{% for item in cart_item.variations.all %}

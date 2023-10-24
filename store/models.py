@@ -21,6 +21,7 @@ class Product(models.Model):
     modified_date   = models.DateTimeField(auto_now=True)
     level           = models.CharField(max_length=255,choices=[('1','Level 1'),('2','Level II'),('3','Level III')],default="1")
     pdf_file        = models.FileField(upload_to='pdfs/', blank=True, null=True)
+    weeks           = models.IntegerField()
     def get_url(self):
         return reverse('product_detail', args=[self.category.slug, self.slug])
 

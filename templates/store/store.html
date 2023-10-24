@@ -3,7 +3,7 @@
 
 {% block content %}
 <!-- ========================= SECTION PAGETOP ========================= -->
-<section class="section-pagetop bg">
+<section class="section-pagetop bg" style="display: flex;">
 <div class="container">
 	{% if 'search' in request.path %}
 		<h2 class="title-page">Search Result</h2>
@@ -47,7 +47,7 @@
 </div> <!-- card.// -->
 
 	</aside> <!-- col.// -->
-	<main class="col-md-9">
+	<main class="col-md-9" style="height: 600px">
 
 <header class="border-bottom mb-4 pb-3">
 		<div class="form-inline">
@@ -61,15 +61,19 @@
 	<div class="container h-100">
 		<div class="row align-left">
 		{% for product in products %}
-		<div class="col-md-6 col-lg-3 column">
-			<div class="card gr-1">
+		<div class="col-lg-4 col-md-6 column">
+			<div class="card">
 				<div class="txt">
-					<h3 class="product-name-single-line">{{ product.product_name }}</h3>
+					<h3 class="product-title">{{ product.product_name }}</h3>
 					<p></p>
 				  </div>
-				  <div class="price mt-1">₹ {{ product.price }}</div>
+				  
+				  <small class="title text-muted">Training Weeks - {{ product.weeks }}</small>
 				  <small class="title text-muted">Coach - {{ product.coach }}</small>
-				  <a href="{{ product.get_url }}" style="font-family: Tahoma, sans-serif; font-size: 12px;">more...</a>           
+				  <a href="{{ product.get_url }}" style="font-family: Tahoma, sans-serif; font-size: 12px;">quick view...</a>
+				  <hr> 
+				  <div class="price mt-1">₹ {{ product.price }}</div>
+				       
 				<!-- <div class="img-wrap"> -->
 				
 					<!-- <img src="{{ product.images.url }}" class="product-image">
@@ -112,8 +116,8 @@
 	{% endif %}
 </div> <!-- row end.// -->
 
-
-<nav class="mt-4" aria-label="Page navigation sample">
+</main>
+<nav class="mt-4" aria-label="Page navigation sample" style="margin-left: auto;">
 	{% if products.has_other_pages %}
 	  <ul class="pagination">
 			{% if products.has_previous %}
@@ -139,7 +143,7 @@
 	{% endif %}
 </nav>
 
-	</main> <!-- col.// -->
+	 <!-- col.// -->
 
 </div>
 

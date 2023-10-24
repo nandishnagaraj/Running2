@@ -51,7 +51,12 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff;
+  }
+
+section.section-content.padding-y {}
+
+section.footer-bottom.border-top.row {}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -479,7 +484,8 @@ pre {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
-  margin-left: -15px; }
+  margin-left: -15px;
+  }
 
 .no-gutters {
   margin-right: 0;
