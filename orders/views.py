@@ -52,29 +52,47 @@ def payments(request):
         orderproduct.save()
 
         for variation in product_variation:
-             
-            template_path = f"plantemplates/{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.html"
-            template = get_template(template_path)
-            context = {'customerorder':order}  # Add the necessary context for your template
-            html = template.render(context)
-            response = HttpResponse(content_type='application/pdf')
-            response['Content-Disposition'] = f'attachment; filename="{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf"'
-            pisa_status = pisa.CreatePDF(html, dest=response)
-            if pisa_status.err:
-                return HttpResponse('We had some errors <pre>' + html + '</pre>')
+            if(variation.variation_value == 'Generic Event'):
+                pdf_file = orderproduct.product.pdf_file
+                print(pdf_file)
+                if pdf_file:
+                    # Send email with the attached PDF
+                    mail_subject = 'Thank you for your order!'
+                    message = render_to_string('orders/order_recieved_email.html', {
+                        'user': request.user,
+                        'order': order,
+                        'orderproduct': orderproduct,
+                        'variationname': variation.variation_value,
+                    })
+                    to_email = request.user.email
 
-            # Send order recieved email to customer
-            mail_subject = 'Thank you for your order!'
-            message = render_to_string('orders/order_recieved_email.html', {
-                'user': request.user,
-                'order': order,
-                'orderproduct':orderproduct,
-                'variationname':variation.variation_value,
-            })
-            to_email = request.user.email
-            send_email = EmailMessage(mail_subject, message, to=[to_email])
-            send_email.attach(f'{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf', response.content, 'application/pdf')
-            send_email.send()
+                    send_email = EmailMessage(mail_subject, message, to=[to_email])
+                    send_email.attach(f'{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf', pdf_file.read(), 'application/pdf')
+                    send_email.send()
+            else:
+                template_path = f"plantemplates/{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.html"
+                template = get_template(template_path)
+                context = {'customerorder':order}  # Add the necessary context for your template
+                html = template.render(context)
+                response = HttpResponse(content_type='application/pdf')
+                response['Content-Disposition'] = f'attachment; filename="{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf"'
+                pisa_status = pisa.CreatePDF(html, dest=response)
+                if pisa_status.err:
+                    return HttpResponse('We had some errors <pre>' + html + '</pre>')
+
+                # Send order recieved email to customer
+                mail_subject = 'Thank you for your order!'
+                message = render_to_string('orders/order_recieved_email.html', {
+                    'user': request.user,
+                    'order': order,
+                    'orderproduct':orderproduct,
+                    'variationname':variation.variation_value,
+                })
+                to_email = request.user.email
+                send_email = EmailMessage(mail_subject, message, to=[to_email])
+                send_email.attach(f'{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf', response.content, 'application/pdf')
+                send_email.send()
+            
 
    # Clear cart
     CartItem.objects.filter(user=request.user).delete()
