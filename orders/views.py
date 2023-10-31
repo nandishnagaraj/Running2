@@ -170,6 +170,7 @@ def place_order(request, total=0, quantity=0,):
                 'grand_total': grand_total,
                 'grand_total_razorpay': int(grand_total * 100),
                 'razorpayid': payment_id,
+                'username':current_user,
             }
             return render(request, 'orders/payments.html', context)
     else:
