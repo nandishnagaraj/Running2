@@ -19,6 +19,7 @@ from django.urls import path, include
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,5 @@ urlpatterns = [
     path('cart/', include('carts.urls')),
     path('accounts/', include('accounts.urls')),
     path('orders/', include('orders.urls')),
+    path('privacy-policy/', TemplateView.as_view(template_name='privacy_policy.html'), name='privacy_policy'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
