@@ -272,18 +272,36 @@ $(document).ready(function() {
     text-align: center;
     color: #fff;
 }
+
+.responsive-carousel {
+  height: 40vh; /* Adjust the percentage as needed */
+  overflow: hidden;
+}
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  .responsive-carousel {
+    height: 40vh; /* Adjust the percentage as needed for medium-sized screens */
+  }
+}
+
+/* Media query for screens with a maximum width of 576px (mobile screens) */
+@media (max-width: 576px) {
+  .responsive-carousel {
+    height: 30vh; /* Adjust the percentage as needed for smaller screens */
+  }
+}
+
 </style>
 
 </head>
 <body>
-
   <!-- navbar -->
   {% include 'includes/navbar.html' %}
 
   {% block content %}
   <!-- content -->
   {% endblock %}
-
 
 <!-- footer -->
 {% include 'includes/footer.html' %}

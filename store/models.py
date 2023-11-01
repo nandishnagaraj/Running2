@@ -13,7 +13,7 @@ class Product(models.Model):
     shortdescription     = RichTextField()
     longdescription     = RichTextField()
     price           = models.IntegerField()
-    images          = models.ImageField(upload_to='photos/products')
+    images          = models.ImageField(upload_to='photos/products', blank=True, null=True)
     coach           = models.CharField(max_length=500, blank=True, default='Generic')
     is_available    = models.BooleanField(default=True)
     category        = models.ForeignKey(Category, on_delete=models.CASCADE)
