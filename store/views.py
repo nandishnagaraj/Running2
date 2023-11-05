@@ -56,6 +56,7 @@ def product_detail(request, category_slug, product_slug):
         'in_cart'       : in_cart,
         'orderproduct': orderproduct,
         'reviews': reviews,
+        'registereduser':request.user.is_authenticated,
     }
     return render(request, 'store/product_detail.html', context)
 
