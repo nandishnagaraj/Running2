@@ -12,30 +12,31 @@
 		<header class="mb-4"><h4 class="card-title">Sign up</h4></header>
 		<form action="{% url 'register' %}" method="POST">
       {% csrf_token %}
-
-
 				<div class="form-row">
 					<div class="col form-group">
 						<label>First name</label>
-					  	{{ form.first_name }}
-					</div> <!-- form-group end.// -->
+						<input type="text" name="first_name" id="first_name" class="form-control" required>
+						<span id="first_name_error" class="error-text"></span>
+					</div>
 					<div class="col form-group">
 						<label>Last name</label>
-					  	{{ form.last_name }}
-					</div> <!-- form-group end.// -->
-				</div> <!-- form-row end.// -->
-
+						<input type="text" name="last_name" id="last_name" class="form-control" required>
+						<span id="last_name_error" class="error-text"></span>
+					</div>
+				</div>
 
 				<div class="form-row">
 					<div class="form-group col-md-6">
-					  <label>Email Address</label>
-					  {{form.email}}
-					</div> <!-- form-group end.// -->
+						<label>Email Address</label>
+						<input type="email" name="email" id="email" class="form-control" required>
+						<span id="email_error" class="error-text"></span>
+					</div>
 					<div class="form-group col-md-6">
-					  <label>Phone Number</label>
-					  {{form.phone_number}}
-					</div> <!-- form-group end.// -->
-				</div> <!-- form-row.// -->
+						<label>Phone Number</label>
+						<input type="text" name="phone_number" id="phone_number" class="form-control" required>
+						<span id="phone_number_error" class="error-text"></span>
+					</div>
+				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Create password</label>
@@ -57,7 +58,65 @@
     <p class="text-center mt-4">Have an account? <a href="{% url 'login' %}">Log In</a></p>
     <br><br>
 <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+<script>
+	// Function to validate first name and last name
+	function validateName(inputElement, errorElement) {
+		const namePattern = /^[A-Za-z]+$/;
+		const value = inputElement.value;
+		if (!namePattern.test(value)) {
+			errorElement.textContent = "Please enter a valid name with only letters.";
+		} else {
+			errorElement.textContent = "";
+		}
+	}
 
+	// Function to validate email
+	function validateEmail(inputElement, errorElement) {
+		const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+		const value = inputElement.value;
+		if (!emailPattern.test(value)) {
+			errorElement.textContent = "Please enter a valid email address.";
+		} else {
+			errorElement.textContent = "";
+		}
+	}
+
+	// Function to validate phone number
+	function validatePhoneNumber(inputElement, errorElement) {
+		const phoneNumberPattern = /^\d{10}$/;
+		const value = inputElement.value;
+		if (!phoneNumberPattern.test(value)) {
+			errorElement.textContent = "Please enter a 10-digit phone number.";
+		} else {
+			errorElement.textContent = "";
+		}
+	}
+
+	// Attach event listeners to the input fields
+	const firstNameInput = document.getElementById("first_name");
+	const firstNameError = document.getElementById("first_name_error");
+	firstNameInput.addEventListener("input", () => {
+		validateName(firstNameInput, firstNameError);
+	});
+
+	const lastNameInput = document.getElementById("last_name");
+	const lastNameError = document.getElementById("last_name_error");
+	lastNameInput.addEventListener("input", () => {
+		validateName(lastNameInput, lastNameError);
+	});
+
+	const emailInput = document.getElementById("email");
+	const emailError = document.getElementById("email_error");
+	emailInput.addEventListener("input", () => {
+		validateEmail(emailInput, emailError);
+	});
+
+	const phoneNumberInput = document.getElementById("phone_number");
+	const phoneNumberError = document.getElementById("phone_number_error");
+	phoneNumberInput.addEventListener("input", () => {
+		validatePhoneNumber(phoneNumberInput, phoneNumberError);
+	});
+</script>
 
 </section>
 
