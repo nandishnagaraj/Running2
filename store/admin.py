@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, ReviewRating, Variation
+from .models import Product, ReviewRating, Variation, DownloadRecord
 from ckeditor.widgets import CKEditorWidget
 
 class ProductAdmin(admin.ModelAdmin):
@@ -16,6 +16,12 @@ class VariationAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
     list_filter = ('product', 'variation_category', 'variation_value')
 
+class DownloadRecordAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product', 'download_time')
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Variation, VariationAdmin)
 admin.site.register(ReviewRating)
+admin.site.register(DownloadRecord, DownloadRecordAdmin)
+
+

@@ -3,7 +3,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from carts.models import CartItem
 from carts.views import _cart_id
 from orders.models import OrderProduct
-from .models import Product, ReviewRating
+from .models import Product, ReviewRating, DownloadRecord  
 from category.models import Category
 from django.db.models import Q
 from .forms import ReviewForm
@@ -102,6 +102,11 @@ def downloadPDF(request, product_id):
     pdf_file = product.pdf_file
 
     if pdf_file:
+            if request.user.is_authenticated:
+                user = request.user
+            else:
+                user = None
+            download_record = DownloadRecord.objects.create(user=user, product=product)
             # Set the content type as application/pdf to tell the browser it's a PDF
             response = HttpResponse(pdf_file.read(), content_type='application/pdf')
             # Set the content disposition to 'attachment' to force download
