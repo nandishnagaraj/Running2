@@ -49,6 +49,11 @@
           {% else %}
           <div class="widget-header">
             <small class="title text-muted">Welcome {{user.first_name}}!</small>
+            {% if user.is_coach %}
+                <!-- Additional content or links for coaches -->
+                <small class="title text-muted"><a href="{% url 'coach_dashboard' %}"> Coach Dashboard</a></small>
+              
+              {% endif %}
             <div>
               <a href="{% url 'logout' %}"> Logout</a>
             </div>

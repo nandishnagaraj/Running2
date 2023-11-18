@@ -33,6 +33,7 @@ class MyAccountManager(BaseUserManager):
         user.is_active = True
         user.is_staff = True
         user.is_superadmin = True
+        user.is_coach=True
         user.save(using=self._db)
         return user
 
@@ -53,7 +54,7 @@ class Account(AbstractBaseUser):
     is_active        = models.BooleanField(default=False)
     is_superadmin        = models.BooleanField(default=False)
 
-    # is_coach = models.BooleanField(default=False)
+    is_coach = models.BooleanField(default=False)
     # coach_photo = models.ImageField(upload_to='coach_photos/', blank=True, null=True)
     # coach_description = models.TextField(blank=True, null=True)
 
@@ -90,3 +91,11 @@ class UserProfile(models.Model):
 
     def full_address(self):
         return f'{self.address_line_1} {self.address_line_2}'
+
+
+class Coach(models.Model):
+    user = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True)
+    # Add any other coach-specific fields if needed
+
+    def __str__(self):
+        return self.user.username

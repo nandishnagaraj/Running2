@@ -8,4 +8,6 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('submit_review/<int:product_id>/', views.submit_review, name='submit_review'),
     path('download/<int:product_id>/', views.downloadPDF, name='download_product'),
+    path('coach_dashboard/', views.coachDashboard, name='coach_dashboard'),
+    
 ]

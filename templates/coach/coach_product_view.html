@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3>Plans Purchased </h3>
+
+{% for product in products %}
+    <p>{{ product.product.product_name }} - Quantity: {{ product.quantity }} - Price: {{ product.product_price }} - Total Weeks: {{ product.product.weeks }}</p>
+    
+   
+{% endfor %}
+
+
+{% endblock %}

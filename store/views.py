@@ -9,6 +9,7 @@ from django.db.models import Q
 from .forms import ReviewForm
 from django.contrib import messages
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 def store(request, category_slug=None):
     categories = None
     products = None
@@ -116,3 +117,13 @@ def downloadPDF(request, product_id):
         # Handle the case where the PDF file is not available
     return HttpResponse("PDF not available", status=404)
 
+@login_required
+def coachDashboard(request):
+    coach = request.user.coach  # Assuming a OneToOneField between Account and Coach
+    products = OrderProduct.objects.filter(coach=coach, ordered=True)
+
+    context = {
+        'products': products,
+    }
+
+    return render(request, 'coach/coach_product_view.html', context)
