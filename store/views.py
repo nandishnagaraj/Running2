@@ -9,6 +9,10 @@ from django.db.models import Q
 from .forms import ReviewForm
 from django.contrib import messages
 from django.http import HttpResponse
+from google.oauth2 import id_token
+from google.auth.transport import requests
+from google_auth_oauthlib.flow import InstalledAppFlow
+
 def store(request, category_slug=None):
     categories = None
     products = None

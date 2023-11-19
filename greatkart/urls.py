@@ -30,4 +30,6 @@ urlpatterns = [
     path('orders/', include('orders.urls')),
     path('privacy-policy/', TemplateView.as_view(template_name='privacy_policy.html'), name='privacy_policy'),
     path('termsofuse/', TemplateView.as_view(template_name='termsofuse.html'), name='termsofuse'),
+    path("accounts/", include("allauth.urls")),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-
+{% load socialaccount %}
 {% block content %}
 
 <section class="section-conten padding-y" style="min-height:84vh">
@@ -38,6 +38,13 @@ Already verified? <a href="{% url 'login' %}">Login</a>
           <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block"> Login  </button>
           </div> <!-- form-group// -->
+      </form>
+      
+      <form action="{% provider_login_url 'google' %}?next=/store/" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Login from Google </button>
+      </div>
       </form>
       </div> <!-- card-body.// -->
     </div> <!-- card .// -->

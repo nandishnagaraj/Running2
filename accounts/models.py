@@ -43,14 +43,14 @@ class Account(AbstractBaseUser):
     last_name       = models.CharField(max_length=50)
     username        = models.CharField(max_length=50, unique=True)
     email           = models.EmailField(max_length=100, unique=True)
-    phone_number    = models.CharField(max_length=50)
+    phone_number    = models.CharField(max_length=50,blank=True, null=True)
 
     # required
     date_joined     = models.DateTimeField(auto_now_add=True)
     last_login      = models.DateTimeField(auto_now_add=True)
     is_admin        = models.BooleanField(default=False)
     is_staff        = models.BooleanField(default=False)
-    is_active        = models.BooleanField(default=False)
+    is_active        = models.BooleanField(default=True)
     is_superadmin        = models.BooleanField(default=False)
 
     # is_coach = models.BooleanField(default=False)
