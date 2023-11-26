@@ -43,6 +43,7 @@ def payments(request):
         orderproduct.quantity = item.quantity
         orderproduct.product_price = item.product.price
         orderproduct.ordered = True
+        orderproduct.coach = item.product.coach
         orderproduct.save()
 
         cart_item = CartItem.objects.get(id=item.id)

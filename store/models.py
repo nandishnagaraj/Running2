@@ -1,9 +1,12 @@
 from django.db import models
 from django.urls import reverse
-from accounts.models import Account
+from accounts.models import Account, Coach
 from category.models import Category
 from ckeditor.fields import RichTextField
 from django.db.models import Avg, Count
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -14,7 +17,7 @@ class Product(models.Model):
     longdescription     = RichTextField()
     price           = models.IntegerField()
     images          = models.ImageField(upload_to='photos/products', blank=True, null=True)
-    coach           = models.CharField(max_length=500, blank=True, default='Generic')
+    coach = models.ForeignKey(Coach, on_delete=models.SET_NULL, blank=True, null=True,  default=1)
     is_available    = models.BooleanField(default=True)
     category        = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_date    = models.DateTimeField(auto_now_add=True)
@@ -52,7 +55,32 @@ class Product(models.Model):
             is_active=True
         )
         event_variation.save()
-    
+
+@receiver(post_save, sender=Account)
+def create_coach_for_user(sender, instance, created, **kwargs):
+    print("Signal received!",instance)
+    print(f"Created: {created}")
+    print(f"Is superuser: {instance.is_superadmin}")
+    print(f"Is coach: {instance.is_coach}")
+    if (instance.is_superadmin or instance.is_coach):
+        print("Creating Coach...")
+        coach, created = Coach.objects.get_or_create(user=instance)
+        print(f"Coach created: {created}")
+
+post_save.connect(create_coach_for_user, sender=Account)
+
+@receiver(post_delete, sender=Account)
+def delete_coach(sender, instance, **kwargs):
+    print("Signal received! for delete",instance)
+    try:
+        coach = Coach.objects.get(user=instance)
+        coach.delete()
+        print("Coach deleted.")
+    except Coach.DoesNotExist:
+        pass
+
+post_delete.connect(delete_coach, sender=Account)
+
 class VariationManager(models.Manager):
 
     def event(self):

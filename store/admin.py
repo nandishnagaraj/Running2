@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Product, ReviewRating, Variation, DownloadRecord
 from ckeditor.widgets import CKEditorWidget
+from accounts.models import Coach
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('product_name', 'price', 'coach', 'category', 'modified_date', 'is_available')
@@ -9,7 +10,6 @@ class ProductAdmin(admin.ModelAdmin):
         Product.shortdescription: {'widget': CKEditorWidget},
         Product.longdescription: {'widget': CKEditorWidget},
     }
-
 
 class VariationAdmin(admin.ModelAdmin):
     list_display = ('product', 'variation_category', 'variation_value', 'is_active')
