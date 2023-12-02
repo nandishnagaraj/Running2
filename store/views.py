@@ -10,6 +10,8 @@ from .forms import ReviewForm
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from accounts.models import Account, Coach
+
 def store(request, category_slug=None):
     categories = None
     products = None
@@ -121,9 +123,44 @@ def downloadPDF(request, product_id):
 def coachDashboard(request):
     coach = request.user.coach  # Assuming a OneToOneField between Account and Coach
     products = OrderProduct.objects.filter(coach=coach, ordered=True)
-
+    user_purchases = []
+    for product in products:
+        user_purchases.append({
+            'user': product.user,
+            'product': product.product,
+            'quantity': product.quantity,
+            'price': product.product_price,
+        })
     context = {
         'products': products,
+        'user_purchases': user_purchases,
     }
 
     return render(request, 'coach/coach_product_view.html', context)
+
+
+def get_products_purchased_by_user_for_coach(user_id, coach_id):
+    try:
+        user = Account.objects.get(id=user_id)
+        coach = Coach.objects.get(id=coach_id)
+        
+        # Get the OrderProduct instances for the user, coach combination
+        order_products = OrderProduct.objects.filter(user=user, coach=coach, ordered=True)
+
+        # Extract product details from OrderProduct instances
+        products_purchased = []
+        for order_product in order_products:
+            product_info = {
+                'product_name': order_product.product.product_name,
+                'quantity': order_product.quantity,
+                'product_price': order_product.product_price,
+                'coach_name': order_product.coach.user.username,
+            }
+            products_purchased.append(product_info)
+
+        return products_purchased
+
+    except Account.DoesNotExist:
+        return None
+    except Coach.DoesNotExist:
+        return None
