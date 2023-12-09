@@ -189,6 +189,12 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         grand_total = 0
         if request.user.is_authenticated:
             cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+            user_info = {
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'email': request.user.email,
+                'phone': request.user.phone_number,
+            }
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
@@ -206,5 +212,6 @@ def checkout(request, total=0, quantity=0, cart_items=None):
         'cart_items': cart_items,
         'tax'       : tax,
         'grand_total': grand_total,
+        'user_info': user_info,
     }
     return render(request, 'store/checkout.html', context)
