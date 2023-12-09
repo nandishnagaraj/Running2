@@ -45,6 +45,12 @@
                     <label for="seconds">Seconds:</label>
                     <input type="number" id="seconds" name="seconds" min="0" max="59" required>
 
+                    <label for="metrics">Metrics:</label>
+                    <input type="radio" id="km" name="metrics" value="km" checked>
+                    <label for="km">km</label>
+                    <input type="radio" id="miles" name="metrics" value="miles">
+                    <label for="miles">miles</label>
+
                     <button type="button" onclick="calculateTiming()">Find you Zone</button>
                 </form>
 
@@ -61,6 +67,8 @@
     async function calculateTiming() {
         const minutes = parseInt(document.getElementById('minutes').value, 10);
         const seconds = parseInt(document.getElementById('seconds').value, 10);
+        const metrics = document.querySelector('input[name="metrics"]:checked').value;
+        console.log(metrics)
 
         if (isNaN(minutes) || isNaN(seconds) || minutes < 0 || minutes > 59 || seconds < 0 || seconds > 59) {
             alert('Please enter valid minutes and seconds (0-59).');
@@ -76,10 +84,11 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "time": `${minutes}:${seconds}` }),
+                body: JSON.stringify({ "time": `${minutes}:${seconds}`, "metrics": `${metrics}` }),
             });
 
             const result = await response.json();
+            console.log(result)
 
             // Display the result
             document.getElementById('result').innerHTML = ``;
