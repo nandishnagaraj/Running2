@@ -19,21 +19,37 @@
       <div class="form-row">
         <div class="col form-group">
           <label for="">First Name</label>
-          <input type="text" name="first_name" class="form-control" required>
+          {% if user.is_authenticated %}
+            <input type="text" name="first_name" class="form-control" value="{{ user.first_name }}" required>
+          {% else %}
+            <input type="text" name="first_name" class="form-control" required>
+          {% endif %}
         </div>
         <div class="col form-group">
           <label for="">Last Name</label>
-          <input type="text" name="last_name" class="form-control" required>
+          {% if user.is_authenticated %}
+            <input type="text" name="last_name" class="form-control" value="{{ user.last_name }}" required>
+          {% else %}
+            <input type="text" name="last_name" class="form-control" required>
+          {% endif %}
         </div>
       </div>
       <div class="form-row">
         <div class="col form-group">
           <label for="">Email</label>
-          <input type="email" name="email" class="form-control" required>
+          {% if user.is_authenticated %}
+            <input type="text" name="email" class="form-control" value="{{ user.email }}" required>
+          {% else %}
+            <input type="text" name="email" class="form-control" required>
+          {% endif %}
         </div>
         <div class="col form-group">
           <label for="">Phone Number</label>
-          <input type="text" name="phone" class="form-control" required>
+          {% if user.is_authenticated %}
+            <input type="text" name="phone" class="form-control" value="{{ user_info.phone }}" required>
+          {% else %}
+            <input type="text" name="phone" class="form-control" required>
+          {% endif %}
         </div>
       </div>
       <div class="form-row">
