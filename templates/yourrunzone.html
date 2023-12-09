@@ -79,12 +79,19 @@
 
         // Call Cloud Function
         try {
+
+            const ipResponse = await fetch('https://ipinfo.io/json');
+            const ipData = await ipResponse.json();
+            const ipAddress = ipData.ip;
+            console.log('User IP Address:', ipAddress);
+
+
             const response = await fetch('https://asia-south1-djangopractice-401603.cloudfunctions.net/basedon5k', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "time": `${minutes}:${seconds}`, "metrics": `${metrics}` }),
+                body: JSON.stringify({ "time": `${minutes}:${seconds}`, "metrics": `${metrics}`, "ipAddress": ipAddress }),
             });
 
             const result = await response.json();
@@ -96,8 +103,9 @@
             // Display the Cloud Function Response in a Table
             displayResponseInTable(result);
         } catch (error) {
+            console.error('Error getting IP address:', error);
             console.error('Error calling Cloud Function:', error);
-            alert('Error calling Cloud Function.');
+            alert('Error Please try after sometime.');
         }
     }
 
