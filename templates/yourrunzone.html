@@ -82,8 +82,7 @@
 
             const ipResponse = await fetch('https://ipinfo.io/json');
             const ipData = await ipResponse.json();
-            const ipAddress = ipData.ip;
-            console.log('User IP Address:', ipAddress);
+            console.log('User IP Data:', ipData);
 
 
             const response = await fetch('https://asia-south1-djangopractice-401603.cloudfunctions.net/basedon5k', {
@@ -91,7 +90,7 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "time": `${minutes}:${seconds}`, "metrics": `${metrics}`, "ipAddress": ipAddress }),
+                body: JSON.stringify({ "time": `${minutes}:${seconds}`, "metrics": `${metrics}`, "ipData": ipData }),
             });
 
             const result = await response.json();
