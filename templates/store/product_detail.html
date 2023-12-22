@@ -60,12 +60,12 @@
 						
 						
 						{% if registereduser and single_product.price == 0 %}
-							<a href="{% url 'download_product' single_product.id %}" class="btn btn-primary">
-								<span class="text">Download</span> <i class="fas fa-download"></i>
+							<a href="{% url 'download_product' single_product.id %}" class="btn btn-primary" style="width: 150px; height: 30px;">
+								<span class="text" style="display: flex; justify-content: center; align-items: center;">Download</span>
 							</a>											
 						{% elif registereduser and single_product.price >= 0 %}
-							<button type="submit" class="btn btn-primary">
-								<span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>
+							<button type="submit" class="btn btn-primary" style="width: 150px; height: 30px; text-align: center;">
+								<span class="text">Add to cart</span>
 							</button>
 						{% else %}
 							<p>You must be registered to download this product. <br> <a href="{% url 'register' %}">Register now</a></p>
