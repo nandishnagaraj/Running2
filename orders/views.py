@@ -11,6 +11,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+from django.conf import settings
 
 
 def payments(request):
@@ -155,7 +156,7 @@ def place_order(request, total=0, quantity=0,):
             data.order_number = order_number
             data.save()
 
-            client = razorpay.Client(auth=("rzp_test_yu3IOJAh3QwXPK", "S0EuAjAVYsMMprwVYx2LWjrU"))           
+            client = razorpay.Client(auth=(settings.RAZOR_KEY_ID, settings.RAZOR_KEY_SECRET))           
             payment = client.order.create({'amount': int(grand_total * 100), 'currency': 'INR','payment_capture': '1'})            
             payment_id = payment['id']
 
