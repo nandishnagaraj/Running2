@@ -174,8 +174,11 @@ EMAIL_USE_TLS = True
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
 
-RAZOR_KEY_ID = 'rzp_test_yu3IOJAh3QwXPK'
-RAZOR_KEY_SECRET = 'S0EuAjAVYsMMprwVYx2LWjrU'
+# RAZOR_KEY_ID = 'rzp_test_yu3IOJAh3QwXPK'
+# RAZOR_KEY_SECRET = 'S0EuAjAVYsMMprwVYx2LWjrU'
+
+RAZOR_KEY_ID = 'rzp_live_ar1qt3aO4oC6eS'
+RAZOR_KEY_SECRET = 'wTanxaZ5ADhq3hZhmusRV0z8'
 
 CKEDITOR_CONFIGS = {
     'default': {
