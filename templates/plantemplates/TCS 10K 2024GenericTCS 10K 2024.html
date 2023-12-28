@@ -1141,7 +1141,7 @@
                     </tr>
                 </thead>
             </table>
-            <!-- <table class="table table-bordered text-center">
+            <table class="table table-bordered text-center">
                 <thead>
                     <tr class="bg-light-gray col">
 
@@ -1157,25 +1157,25 @@
                     </tr>
                     <tr>
                         <td class="text-uppercase">Intervals</td>
-                        <td> </td>
+                        <td>{{interval_runs_result}}</td>
                     </tr>
                     <tr>
                         <td class="text-uppercase">Strides</td>
-                        <td> </td>
+                        <td> {{strides_runs_result}} </td>
                     </tr>
                     <tr>
                         <td class="text-uppercase">Tempo</td>
-                        <td> </td>
+                        <td>{{tempo_runs_result}}</td>
                     </tr>
                     <tr>
                         <td class="text-uppercase">Easy</td>
-                        <td> </td>
+                        <td> {{easy_runs_result}} </td>
                     </tr>
                     <tr>
                         <td class="text-uppercase">Long Runs</td>
-                        <td> </td>
+                        <td> {{long_runs_result}}</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td class="text-uppercase">Progressive Runs</td>
                         <td>
                             <table class="table-responsive w-100 d-block d-md-table col-xs-3">
@@ -1240,7 +1240,7 @@
                             </table>
 
                         </td>
-                    </tr>
+                    </tr> 
                     <tr>
                         <td class="text-uppercase">Moderate</td>
                         <td> </td>
@@ -1248,21 +1248,138 @@
                     <tr>
                         <td class="text-uppercase">3k Pace</td>
                         <td> </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td class="text-uppercase">Warm Up</td>
-                        <td> </td>
+                        <td> 
+                            <table>
+                            <thead>
+                                <tr>
+                                    <th>Exercise</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Light Jogging</td>
+                                    <td>Start with a slow, easy jog for 5-10 minutes to increase your heart rate and warm up your muscles.</td>
+                                </tr>
+                                <tr>
+                                    <td>Leg Swings</td>
+                                    <td>Swing each leg forward and backward and then side to side.</td>
+                                </tr>
+                                <tr>
+                                    <td>Arm Circles</td>
+                                    <td>Rotate your arms in small and large circles.</td>
+                                </tr>
+                                <tr>
+                                    <td>Hip Circles</td>
+                                    <td>Rotate your hips in a circular motion.</td>
+                                </tr>
+                                <tr>
+                                    <td>Acceleration Gliders</td>
+                                    <td>Gradually increase your pace over a short distance, focusing on your running form.</td>
+                                </tr>
+                                <tr>
+                                    <td>Build-Ups</td>
+                                    <td>Gradually increase your speed over 50-100 meters, reaching near-sprint speed without straining.</td>
+                                </tr>
+                                <tr>
+                                    <td>High Knees</td>
+                                    <td>Stand tall and lift your knees towards your chest while jogging in place. Focus on keeping a quick and light rhythm.</td>
+                                </tr>
+                                <tr>
+                                    <td>Butt Kicks</td>
+                                    <td>Jog in place while kicking your heels towards your glutes. Keep your knees pointed towards the ground.</td>
+                                </tr>
+                                <tr>
+                                    <td>Dynamic Lunges</td>
+                                    <td>Step forward with one foot into a lunge position. Alternate legs, dynamically moving forward.</td>
+                                </tr>
+                                <tr>
+                                    <td>Skipping</td>
+                                    <td>Skip in place, lifting your knees as high as comfortable. Engage your arms in a natural skipping motion.</td>
+                                </tr>
+                                <tr>
+                                    <td>A-Skips</td>
+                                    <td>Lift your knee and drive it forward while hopping on the opposite foot. Emphasize driving the knee up towards your chest.</td>
+                                </tr>
+                                <tr>
+                                    <td>Bounding</td>
+                                    <td>Take exaggerated, powerful strides while running. Focus on covering as much ground as possible with each stride.</td>
+                                </tr>
+                                <tr>
+                                    <td>Carioca</td>
+                                    <td>Cross one foot over the other while moving laterally. Alternate the direction to engage different muscles.</td>
+                                </tr>
+                                <tr>
+                                    <td>Frankenstein Walks</td>
+                                    <td>Extend your leg straight in front of you, aiming to touch your hand. Walk forward with alternating legs.</td>
+                                </tr>
+                                <tr>
+                                    <td>Ankle Rolls</td>
+                                    <td>Lift one foot and rotate your ankle clockwise and then counterclockwise. Switch to the other foot.</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </td>
                     </tr>
                     <tr>
                         <td class="text-uppercase">Cool Down</td>
-                        <td> </td>
+                            <td><table>
+                                <thead>
+                                    <tr>
+                                        <th>Exercise</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Slow Jogging</td>
+                                        <td>Finish your run with a slow, easy jog to gradually decrease your heart rate and cool down your muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Static Stretching</td>
+                                        <td>Hold stretches for major muscle groups, including hamstrings, quadriceps, calves, and hip flexors. Hold each stretch for 15-30 seconds.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Deep Breathing</td>
+                                        <td>Practice deep, diaphragmatic breathing to promote relaxation and reduce tension in your muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Legs Up the Wall</td>
+                                        <td>Lie on your back with your legs extended up against a wall. This helps promote blood circulation and reduces muscle fatigue.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Seated Forward Bend</td>
+                                        <td>Sit with your legs extended in front of you and reach towards your toes, stretching your hamstrings and lower back.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Child's Pose</td>
+                                        <td>Kneel on the ground, sit back on your heels, and stretch your arms forward. This stretches your back, shoulders, and hips.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Calf Stretch</td>
+                                        <td>Stand near a wall, place one foot behind you, and lean forward to stretch your calf muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Neck Stretch</td>
+                                        <td>Gently tilt your head to each side, forward, and backward to release tension in your neck muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Side Stretch</td>
+                                        <td>Stand or sit and reach one arm overhead, leaning to the opposite side to stretch your lateral muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quadriceps Stretch</td>
+                                        <td>Stand on one leg, bring your other foot towards your buttocks, and gently pull your foot towards your glutes to stretch your quadriceps.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                         </td>
                     </tr>
                 </tbody>
-            </table> -->
-
-
-
-
+            </table>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

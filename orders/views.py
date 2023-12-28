@@ -12,6 +12,7 @@ from django.template.loader import render_to_string
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.conf import settings
+import random
 
 
 def payments(request):
@@ -73,7 +74,13 @@ def payments(request):
             else:
                 template_path = f"plantemplates/{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.html"
                 template = get_template(template_path)
-                context = {'customerorder':order}  # Add the necessary context for your template
+                interval_runs_result = interval_runs(order.timings, metrics="km")
+                strides_runs_result = strides_runs(order.timings, metrics="km")
+                fartlek_runs_result = fartlek_runs(order.timings, metrics="km")
+                long_runs_result = long_runs(order.timings, metrics="km")
+                tempo_runs_result = tempo_runs(order.timings, metrics="km")
+                easy_runs_result = easy_runs(order.timings, metrics="km")
+                context = {'customerorder':order,'strides_runs_result':strides_runs_result, 'easy_runs_result':easy_runs_result, 'tempo_runs_result':tempo_runs_result, 'interval_runs_result':interval_runs_result,'fartlek_runs_result':fartlek_runs_result,'long_runs_result':long_runs_result}  # Add the necessary context for your template
                 html = template.render(context)
                 response = HttpResponse(content_type='application/pdf')
                 response['Content-Disposition'] = f'attachment; filename="{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.pdf"'
@@ -203,7 +210,73 @@ def order_complete(request):
         return render(request, 'orders/order_complete.html', context)
     except (Payment.DoesNotExist, Order.DoesNotExist):
         return redirect('home')
-    
+
+
+def calculate_runs(total_seconds, distance, adjustment_range=(0.85, 0.92), metrics="km"):
+    try:
+        # Randomize the adjustment factor within the specified range
+        adjustment_factor = random.uniform(*adjustment_range)
+        adjusted_total_seconds = total_seconds * adjustment_factor
+
+        # Calculate pace
+        pace_seconds = adjusted_total_seconds / distance
+        pace_minutes = int(pace_seconds / 60)
+        pace_seconds %= 60
+        pace_seconds_rounded = round(pace_seconds, 2) 
+
+        # Calculate the pace range
+        lower_bound = f"{pace_minutes}:{max(0, int(pace_seconds_rounded - 5)):02d}"
+        upper_bound = f"{pace_minutes}:{min(59, int(pace_seconds_rounded + 5)):02d}"
+
+        unit = "mile" if metrics == "miles" else "km"
+        runs_result = f"Pace range: {lower_bound} to {upper_bound} per {unit}."
+
+        return runs_result
+    except ZeroDivisionError:
+        raise ValueError("Distance cannot be zero.")
+
+def interval_runs(total_seconds, metrics="km"):
+    return calculate_runs(total_seconds, 5.0, metrics=metrics)
+
+def strides_runs(total_seconds, metrics="km"):
+    return calculate_runs(total_seconds, 5.0, adjustment_range=(0.80, 0.90), metrics=metrics)
+
+def tempo_runs(total_seconds, metrics="km"):
+    return calculate_runs(total_seconds, 5.0, adjustment_range=(1.06, 1.15), metrics=metrics)
+
+def easy_runs(total_seconds, metrics="km"):
+    return calculate_runs(total_seconds, 5.0, adjustment_range=(1.40, 1.65), metrics=metrics)
+
+def long_runs(total_seconds, metrics="km"):
+    return calculate_runs(total_seconds, 5.0, adjustment_range=(1.20, 1.35), metrics=metrics)
+
+def fartlek_runs(total_seconds, metrics="km"):
+    return calculate_runs(total_seconds, 5.0, adjustment_range=(1.10, 1.20), metrics=metrics)
+
+def extract_seconds(total_time):
+    try:
+        minutes, seconds = map(int, total_time.split(':'))
+        if 0 <= minutes <= 59 and 0 <= seconds <= 59:
+            return minutes * 60 + seconds  # Convert minutes to seconds and add to seconds
+        else:
+            raise ValueError("Invalid minutes or seconds value.")
+    except ValueError:
+        raise ValueError("Invalid time format. Please use 'mm:ss' format.")
+
+def calculate_pace(total_seconds, distance, metrics="km"):
+    try:
+        pace_seconds = total_seconds / distance
+        pace_minutes = int(pace_seconds / 60)
+        pace_seconds %= 60
+        pace_seconds_rounded = round(pace_seconds)
+
+        unit = "mile" if metrics == "miles" else "km"
+        return pace_minutes, pace_seconds_rounded, unit
+    except ZeroDivisionError:
+        raise ValueError("Distance cannot be zero.")
+
+def calculate_pace_km(total_seconds):
+    return calculate_pace(total_seconds, 5.0)
 
 # def order_in_razorpay(request):
 #     order_number = request.GET.get('order_number')
