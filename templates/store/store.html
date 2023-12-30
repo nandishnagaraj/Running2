@@ -60,7 +60,7 @@
 	{% if products %}	
 	<div class="container">
 		<div class="row align-left">
-		{% for product in products %}
+		{% for product in products|dictsortreversed:"created_date" %}
 		<div class="col-lg-4 col-md-6 column">
 			<div class="card">
 				<div class="txt">
