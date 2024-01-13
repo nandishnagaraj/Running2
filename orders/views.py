@@ -73,7 +73,6 @@ def payments(request):
                     send_email.send()
             else:
                 template_path = f"plantemplates/{orderproduct.product.product_name}{orderproduct.product.coach}{variation.variation_value}.html"
-                print(template_path)
                 template = get_template(template_path)
                 interval_runs_result = interval_runs(order.timings, metrics="km")
                 strides_runs_result = strides_runs(order.timings, metrics="km")
