@@ -119,6 +119,9 @@ def payments(request):
 def place_order(request, total=0, quantity=0,):
     current_user = request.user
 
+    # Get discount value from the user instance
+    discount = current_user.discount
+
     # If the cart count is less than or equal to 0, then redirect back to shop
     cart_items = CartItem.objects.filter(user=current_user)
     cart_count = cart_items.count()
@@ -130,6 +133,7 @@ def place_order(request, total=0, quantity=0,):
     for cart_item in cart_items:
         total += (cart_item.product.price * cart_item.quantity)
         quantity += cart_item.quantity
+    total -= (total * discount / 100)
     tax = (12 * total)/100
     grand_total = total + tax
 

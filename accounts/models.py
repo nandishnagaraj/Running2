@@ -53,6 +53,8 @@ class Account(AbstractBaseUser):
     is_active        = models.BooleanField(default=False)
     is_superadmin        = models.BooleanField(default=False)
 
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+
     # is_coach = models.BooleanField(default=False)
     # coach_photo = models.ImageField(upload_to='coach_photos/', blank=True, null=True)
     # coach_description = models.TextField(blank=True, null=True)
