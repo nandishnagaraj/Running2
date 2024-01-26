@@ -32,8 +32,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  }
+  box-sizing: border-box; }
 
 html {
   font-family: sans-serif;
@@ -42,8 +41,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
-  }
+  display: block; }
 
 body {
   margin: 0;
@@ -134,8 +132,7 @@ sup {
 a {
   color: #D9230F;
   text-decoration: none;
-  background-color: transparent;
-  }
+  background-color: transparent; }
   a:hover {
     color: #91170a;
     text-decoration: underline; }
@@ -172,8 +169,7 @@ svg {
   vertical-align: middle; }
 
 table {
-  border-collapse: collapse;
-  }
+  border-collapse: collapse; }
 
 caption {
   padding-top: 0.75rem;
@@ -4485,8 +4481,7 @@ a.close.disabled {
   color: #212529; }
 
 .carousel {
-  position: relative;
-  }
+  position: relative; }
 
 .carousel.pointer-event {
   touch-action: pan-y; }
@@ -7193,8 +7188,7 @@ a.text-dark:hover, a.text-dark:focus {
   background-image: linear-gradient(#e72510, #D9230F 6%, #cb210e);
   background-repeat: no-repeat;
   filter: none;
-  border: 1px solid #ba1e0d;
-  }
+  border: 1px solid #ba1e0d; }
 
 .btn-secondary,
 .btn-secondary:hover {

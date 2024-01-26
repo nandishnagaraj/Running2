@@ -60,8 +60,7 @@
 <div class="container">
     <div class="row align-left">
     {% for product in products|dictsortreversed:"created_date"|slice:":4" %}
-    <div class="col-md-6 col-lg-3 column">
-        <a href="{{ product.get_url }}">
+	<div class="col-md-6 col-lg-3 column">
 		<div class="card gr-1">
             <div class="txt">
                 <h3 class="product-title">{{ product.product_name }}</h3>
@@ -70,9 +69,8 @@
               <!-- <div class="price mt-1">₹ {{ product.price }}</div> -->
               <small class="title text-muted">Training Weeks - {{ product.weeks }}</small>
               <small class="title text-muted">Coach - {{ product.coach }}</small>
-              <small class="title text-muted">quick view...</small>
+              <a href="{{ product.get_url }}" class="title text-muted" style="font-family: Tahoma, sans-serif; font-size: 8px;">quick view...</a>           
 		</div>
-    </a>
 	</div> <!-- col.// -->
 	{% endfor %}
 </div>

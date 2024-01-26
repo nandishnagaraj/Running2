@@ -62,7 +62,6 @@
 		<div class="row align-left">
 		{% for product in products|dictsortreversed:"created_date" %}
 		<div class="col-lg-4 col-md-6 column">
-			<a href="{{ product.get_url }}">
 			<div class="card">
 				<div class="txt">
 					<h3 class="product-title">{{ product.product_name }}</h3>
@@ -71,11 +70,10 @@
 				  
 				  <small class="title text-muted">Training Weeks - {{ product.weeks }}</small>
 				  <small class="title text-muted">Coach - {{ product.coach }}</small>
-				  <small class="title text-muted">quick view...</small>
+				  <a href="{{ product.get_url }}" class="title text-muted" style="font-family: Tahoma, sans-serif; font-size: 8px;">quick view...</a>
 				  <hr> 
 				  <div class="price mt-1">₹ {{ product.price }}</div>
 			</div>
-			</a>
 		</div> <!-- col.// -->
 		{% endfor %}
 	</div>
