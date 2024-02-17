@@ -73,7 +73,11 @@
 				  <small class="title text-muted">Coach - {{ product.coach }}</small>
 				  <small class="title text-muted">quick view...</small>
 				  <hr> 
-				  <div class="price mt-1">₹ {{ product.price }}</div>
+				  {% if product.price > 0 %}
+				  	<div class="price mt-1">₹ {{ product.price }}</div>
+				  {% else %}
+				 	<small style="font-weight: bold; font-size: 0.6em;">register and download for free</small>
+				  {% endif %}
 			</div>
 		 </a>
 		</div> <!-- col.// -->
