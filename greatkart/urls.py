@@ -31,4 +31,6 @@ urlpatterns = [
     path('privacy-policy/', TemplateView.as_view(template_name='privacy_policy.html'), name='privacy_policy'),
     path('termsofuse/', TemplateView.as_view(template_name='termsofuse.html'), name='termsofuse'),
     path('yourrunzone/', TemplateView.as_view(template_name='yourrunzone.html'), name='yourrunzone'),
+    path('smitha/', TemplateView.as_view(template_name='smitha.html'), name='smitha'),
+    path('pranesh/', TemplateView.as_view(template_name='pranesh.html'), name='pranesh'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
