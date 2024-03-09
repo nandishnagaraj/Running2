@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        @page {
+            size: A1;
+            /* or specify width and height in millimeters or inches */
+            margin: 10mm;
+            /* adjust margins as needed */
+        }
+
+        body {
+            width: 100%;
+            margin-top: 20px;
+            white-space: nowrap;
+        }
+
+        .bg-light-gray {
+            background-color: #f7f7f7;
+        }
+
+        .table-bordered thead td,
+        .table-bordered thead th {
+            border-bottom-width: 2px;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+
+        .bg-sky.box-shadow {
+            box-shadow: 0px 5px 0px 0px #00a2a7
+        }
+
+        .bg-orange.box-shadow {
+            box-shadow: 0px 5px 0px 0px #af4305
+        }
+
+        .bg-green.box-shadow {
+            box-shadow: 0px 5px 0px 0px #4ca520
+        }
+
+        .bg-yellow.box-shadow {
+            box-shadow: 0px 5px 0px 0px #dcbf02
+        }
+
+        .bg-pink.box-shadow {
+            box-shadow: 0px 5px 0px 0px #e82d8b
+        }
+
+        .bg-purple.box-shadow {
+            box-shadow: 0px 5px 0px 0px #8343e8
+        }
+
+        .bg-lightred.box-shadow {
+            box-shadow: 0px 5px 0px 0px #d84213
+        }
+
+
+        .bg-sky {
+            background-color: #02c2c7;
+            white-space: nowrap;
+        }
+
+        .bg-orange {
+            background-color: #e95601;
+            white-space: nowrap;
+        }
+
+        .bg-green {
+            background-color: #5bbd2a;
+            white-space: nowrap;
+        }
+
+        .bg-yellow {
+            background-color: #f0d001;
+            white-space: nowrap;
+        }
+
+        .bg-pink {
+            background-color: #ff48a4;
+            white-space: nowrap;
+        }
+
+        .bg-purple {
+            background-color: #9d60ff;
+            white-space: nowrap;
+        }
+
+        .bg-lightred {
+            background-color: #ff5722;
+            white-space: nowrap;
+        }
+
+        .padding-15px-lr {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .padding-5px-tb {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .margin-10px-bottom {
+            margin-bottom: 10px;
+        }
+
+        .border-radius-5 {
+            border-radius: 5px;
+        }
+
+        .margin-10px-top {
+            margin-top: 10px;
+        }
+
+        .font-size14 {
+            font-size: 14px;
+        }
+
+        .text-light-gray {
+            color: #d6d5d5;
+        }
+
+        .font-size13 {
+            font-size: 13px;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+
+        .table td,
+        .table th {
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table-responsive {
+            margin-left: 0;
+            /* Reset the left margin */
+            margin-right: 0;
+            /* Reset the right margin */
+            padding-left: 0;
+            /* Reset the left padding */
+            padding-right: 0;
+            /* Reset the right padding */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Name : {{customerorder}}</h1>
+    <h1>Email : {{customerorder.user}}</h1>
+    <h1>5KM Current Timings : Dear {{customerorder.first_name}} your current 5KM time is
+        {{customerorder.timingsinMinutes}} minutes and {{customerorder.timingsinSeconds}} seconds. The Below plan is
+        derived based on the current timings</h1>
+
+    <div class="table-responsive w-100 d-block d-md-table col-xs-3" style="margin-left: 0">
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr class="bg-light-gray">
+                    <th class="text-uppercase">
+                    </th>
+                    <th class="text-uppercase">Monday</th>
+                    <th class="text-uppercase">Tuesday</th>
+                    <th class="text-uppercase">Wednesday</th>
+                    <th class="text-uppercase">Thursday</th>
+                    <th class="text-uppercase">Friday</th>
+                    <th class="text-uppercase">Saturday</th>
+                    <th class="text-uppercase">Sunday</th>
+                    <th class="text-uppercase">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-uppercase">Week 1</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            </span>
+                        <div class="margin-10px-top font-size14">Easy Run 5 Km <br> </div>
+                        <div class="font-size13 text-light-gray">Total 5 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy Run <br> 4 KM Tempo Run <br> 4 KM Easy Run
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 12 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Easy
+                           </span>
+                        <div class="margin-10px-top font-size14">6 KM Easy Run <br> No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 6 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy and Strides</span>
+                        <div class="margin-10px-top font-size14">5 Km Easy run <br> 4 * 100mts Strides <br> 75 Sec RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 7 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2KM WU <br> 18 KM long Run <br> Last 6 KM at tempo Pace
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 18 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">48</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 2</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Moderate</span>
+                        <div class="margin-10px-top font-size14">8 KM Progressive Run <br> Start from Easy and Finish at
+                            <br> tempo in last 2 KMs
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run or Cross Train</span>
+                        <div class="margin-10px-top font-size14">No Run Day or Cross Train</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Easy
+                            and Strides</span>
+                        <div class="margin-10px-top font-size14">6 KM Easy Run <br> 6 * 100mts Strides <br> 75 Sec RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">8 Km Easy run</div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2 KM WU <br> 16 KM long Run</div>
+                        <div class="font-size13 text-light-gray">Total 18 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cycling</span>
+                        <div class="margin-10px-top font-size14">24 KM</div>
+                        <div class="font-size13 text-light-gray">Total 24 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">70</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 3</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            and Strides</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km <br> 8 * 10Sec Hill Sprint <br> 60 Sec
+                            Recovery Interval
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 6 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy Run</div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Intervals</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up <br> 4 * 800 mts Sprint <br> 90 Sec RI
+                            <br> 2Km Cool Down
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">6 Km Easy run or No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 6 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy Run Only Nasal Breathing <br> 16 KM long Run
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 20 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cycling</span>
+                        <div class="margin-10px-top font-size14">24 KM</div>
+                        <div class="font-size13 text-light-gray">Total 24 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">68</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 5</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 3 KM </div>
+                        <div class="font-size13 text-light-gray">Total 3 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Intervals</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up Nasal Breathing <br> 3 * 2 KM<br> 120
+                            seconds Recovery Interval <br> 1 Km Cool Down Nasal Breathing</div>
+                        <div class="font-size13 text-light-gray">Total 9 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run or Cross Train</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up Nasal Breathing <br> 4 Km tempo run <br> 2
+                            Km Cool Down </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy run</div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">5 KM Warm Up Nasal Breathing<br> 16 KM long Run</div>
+                        <div class="font-size13 text-light-gray">Total 21 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cycling</span>
+                        <div class="margin-10px-top font-size14">10 KM</div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">55</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 5</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            and Strides</span>
+                        <div class="margin-10px-top font-size14">Easy Run 5 Km <br> 4 * 10 Sec Hill Sprint <br> 60 Sec
+                            RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 6 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Interval
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2KM Warm Up <br> 1600 mtrs * 5 <br> 200 mtrs Recovery
+                            Interval <br> 2KMs Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 12 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">3 KM Easy Run Nasal Breathing <br> 4 KM time trail Flat
+                            Road <br> 3 KM Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run or Cross Train</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">3KM WU Nasal Breathing<br> 12 KM Tempo Run</div>
+                        <div class="font-size13 text-light-gray">Total 15 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Recovery
+                            Swimming</span>
+                        <div class="margin-10px-top font-size14">1 hour easy swimming</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">43</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 6</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            Strides</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km <br> 8 * 10 Sec Hill Sprint + 60 Sec RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 5 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy
+                            Run</span>
+                        <div class="margin-10px-top font-size14">8 KM Easy Run <br> Incorporate Uphill </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy
+                            Run</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy Run <br> Incorporate Uphill </div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up Run <br> 6 * 1 Kms Tempo <br> 90 Sec RI
+                            <br> 2 Km Cool Down
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 12 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy
+                            Run</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy run or No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2KM WU + 16 KM long Run </div>
+                        <div class="font-size13 text-light-gray">Total 18 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Recovery
+                            Swimming</span>
+                        <div class="margin-10px-top font-size14">1 hour easy swimming</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">51</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 7</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            and Strides</span>
+                        <div class="margin-10px-top font-size14">Easy Run 6 Km <br> 12 * 10 Sec Hill Sprint <br> 30 Sec
+                            RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Interval
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up <br> 3 * 3 KM <br> 150 Secs Recovery
+                            Interval <br> 3 KM Cool Down </div>
+                        <div class="font-size13 text-light-gray">Total 14 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy
+                            Run</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Fartlek</span>
+                        <div class="margin-10px-top font-size14">2 KM Easy Run <br> 3 Mins Tempo Run <br> 1 Min easy run
+                            * 10 <br> Total 40 mins Run <br> No Break during the Runs </div>
+                        <div class="font-size13 text-light-gray">Total 9 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy run</div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">6 KM Nasal Breathing <br> 14 KM Uphill long Run </div>
+                        <div class="font-size13 text-light-gray">Total 20 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">55</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 8</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 5 Km </div>
+                        <div class="font-size13 text-light-gray">Total 5 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Interval
+                            Run</span>
+                        <div class="margin-10px-top font-size14">4 KM Warm Up <br> 2 * 4KM <br> 120 Secs Recovery
+                            Interval <br> 3 KM Cool Down </div>
+                        <div class="font-size13 text-light-gray">Total 15 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Run
+                            and Strides</span>
+                        <div class="margin-10px-top font-size14">3 KM Easy Run <br> 3 Kms Tempo Run <br> 2 KMs Cool Down
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">10
+                            KM Time Trail</span>
+                        <div class="margin-10px-top font-size14">2 KM Easy Run <br> 10 Kms Time Trail <br> 1 KMs Cool
+                            Down</div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">38</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 9</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            Strides</span>
+                        <div class="margin-10px-top font-size14">Easy Run 3 Km <br> 8 * 10 Sec Hill Sprint <br> 60 Sec
+                            RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Moderate</span>
+                        <div class="margin-10px-top font-size14">8KM Progressive Run</div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">3 KM Easy Run <br> 2 * 2 KMs Tempo Run <br> 3 Mins
+                            Recovery Interval</div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">22 KM long Easy Run</div>
+                        <div class="font-size13 text-light-gray">Total 22 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cycling</span>
+                        <div class="margin-10px-top font-size14">15 KM</div>
+                        <div class="font-size13 text-light-gray">Total 15 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">59</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 10</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            Strides </span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km + 6 * 10 Sec Hill Sprint + 60 Sec RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 5 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Easy Runs</span>
+                        <div class="margin-10px-top font-size14">3 KM Warm Up Nasal Breathing <br> 15 KM Easy Run </div>
+                        <div class="font-size13 text-light-gray">Total 18 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo</span>
+                        <div class="margin-10px-top font-size14">3 KM Easy Run <br> 5 Kms Tempo <br> 2 Kms Cool Down
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">24 KM long Run</div>
+                        <div class="font-size13 text-light-gray">Total 24 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cycling</span>
+                        <div class="margin-10px-top font-size14">25 KM</div>
+                        <div class="font-size13 text-light-gray">Total 25 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">82</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 11</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy
+                            Strides</span>
+                        <div class="margin-10px-top font-size14">Easy Run 3 Km Nasal Breathing<br> 12 * 10 Sec Hill
+                            Sprint + 60 Sec RI
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 5 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Moderate</span>
+                        <div class="margin-10px-top font-size14">12 KM Moderate Run <br> Start from Easy and Finish at
+                            <br> tempo in last 2 KMs
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 12 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Easy
+                            and Strides</span>
+                        <div class="margin-10px-top font-size14">3 KM Warm Up Run <br> 3 * 4 Kms Easy Tempo <br> 3 Mins
+                            Recovery Interval <br> 3 Kms Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 18 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">18 KMs long Run <br> Prefer Elevation Route </div>
+                        <div class="font-size13 text-light-gray">Total 18 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">53</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 12</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Progressive
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KMs Warm Up <br> 12 KM Progressive <br> 1 Kms Cool
+                            Down</div>
+                        <div class="font-size13 text-light-gray">Total 15 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">4 Km Easy Run</div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Easy
+                            Long Run
+                        </span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up + 14 KM Easy Run </div>
+                        <div class="font-size13 text-light-gray">Total 16 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day </span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2KM WU Nasal Breathing <br> 23 KM Run</div>
+                        <div class="font-size13 text-light-gray">Total 25 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Trekking</span>
+                        <div class="margin-10px-top font-size14">4 KM</div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">64</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 13</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Progressive
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KMs Warm Up <br> 8 KMs <br> 1 Kms Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 11 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up + 12 KMs at Tempo Pace <br> Not at race
+                            Pace <br> 1 KMs Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 15 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Nandi
+                            Hill Stairs</span>
+                        <div class="margin-10px-top font-size14">10 KM</div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run
+                            Run</span>
+                        <div class="margin-10px-top font-size14">14 KM Run </div>
+                        <div class="font-size13 text-light-gray">Total 14 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">54</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 14</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Progressive
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KMs Warm Up <br> 10 KMs <br> 1 Kms Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 13 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Fartlek
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up + 10 * 4 Mins Tempo Pace <br> 1 Mins Jog
+                            <br> 1 KMs Cool Down
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 12 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">25 KM Easy Pace</div>
+                        <div class="font-size13 text-light-gray">Total 25 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cycling
+                        </span>
+                        <div class="margin-10px-top font-size14">20 KM Cycle </div>
+                        <div class="font-size13 text-light-gray">Total 20 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">54</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 15</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km <br> 5 * 20 Sec Uphill <br> 40 Sec
+                            Recovery Interval
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 6 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Progressive
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KMs Warm Up <br> 12 KMs <br> 1 Kms Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 15 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up <br> 8 KM <br> 1 KMs Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 11 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cross
+                            Train Day</span>
+                        <div class="margin-10px-top font-size14">Cross Train Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">22 KM Easy Pace</div>
+                        <div class="font-size13 text-light-gray">Total 22 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Trekking
+                            Day
+                        </span>
+                        <div class="margin-10px-top font-size14">Shivagange Trekking </div>
+                        <div class="font-size13 text-light-gray">Total 3 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">57</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 16</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km <br> 5 * 25 Sec Uphill <br> 35 Sec
+                            Recovery Interval
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 6 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Tempo
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">4 KMs Warm Up <br> 8 KMs Tempo <br> 4 Kms Cool Down
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 16 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Fartlek</span>
+                        <div class="margin-10px-top font-size14">2 KM Warm Up <br> 5 * 10 mins Tempo Run <br> 2 mins
+                            easy run <br> 1 KMs Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 14 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cross
+                            Train Day/ Rest day</span>
+                        <div class="margin-10px-top font-size14">Cross Train Day/ Rest day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">14 KM Easy Pace</div>
+                        <div class="font-size13 text-light-gray">Total 14 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cyclying
+                        </span>
+                        <div class="margin-10px-top font-size14">Easy Cycle 30 KM</div>
+                        <div class="font-size13 text-light-gray">Total 30 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">80</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 17</td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km <br> 8 * 20 Sec Uphill <br> 40 Sec
+                            Recovery Interval
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 7 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Tempo
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KMs Warm Up <br> 12 KMs Tempo <br> 2 Kms Cool Down
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 12 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">4 KMs Easy</div>
+                        <div class="font-size13 text-light-gray">Total 4 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Easy
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">10 KMs Easy Run</div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cross
+                            Train Day/ Rest day</span>
+                        <div class="margin-10px-top font-size14">Cross Train Day/ Rest day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">28 KM Easy Pace</div>
+                        <div class="font-size13 text-light-gray">Total 28 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cyclying
+                        </span>
+                        <div class="margin-10px-top font-size14">Easy Cycle 20 KM</div>
+                        <div class="font-size13 text-light-gray">Total 20 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">81</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 18 </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 4 Km <br> 12 * 30 Sec Uphill <br> 90 Sec
+                            Recovery Interval
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Tempo
+                            Uphill
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KMs Warm Up <br> 8 KMs Tempo Uphill <br> Gandhi
+                            Bhavan Loops<br> 2 Kms Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 12 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Long
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">16 KMs Easy Run</div>
+                        <div class="font-size13 text-light-gray">Total 16 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cross
+                            Train Day/ Rest day</span>
+                        <div class="margin-10px-top font-size14">Cross Train Day/ Rest day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">20 KM Easy Pace <br> Slightly faster than long runs
+                        </div>
+                        <div class="font-size13 text-light-gray">Total 20 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Cyclying
+                        </span>
+                        <div class="margin-10px-top font-size14">Easy Cycle 20 KM</div>
+                        <div class="font-size13 text-light-gray">Total 20 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">66</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 19 </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 8 Km </div>
+                        <div class="font-size13 text-light-gray">Total 8 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Tempo
+                            Uphill
+                            Runs</span>
+                        <div class="margin-10px-top font-size14">2 KMs Warm Up <br> 10 KMs Tempo Uphill <br> Gandhi
+                            Bhavan Loops<br> 2 Kms Cool Down</div>
+                        <div class="font-size13 text-light-gray">Total 14 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Long
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">18 KMs Easy Run</div>
+                        <div class="font-size13 text-light-gray">Total 18 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">24 KM Easy Pace</div>
+                        <div class="font-size13 text-light-gray">Total 24 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Swimming/Trekking
+                        </span>
+                        <div class="margin-10px-top font-size14">Total 0 KM</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">64</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+
+                <!------WEEK--------->
+                <tr>
+                    <td class="text-uppercase">Week 20 </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14 xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 6 Km </div>
+                        <div class="font-size13 text-light-gray">Total 6 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Easy</span>
+                        <div class="margin-10px-top font-size14">Easy Run 10 Km </div>
+                        <div class="font-size13 text-light-gray">Total 10 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13 white-space: nowrap">Tempo
+                            Run</span>
+                        <div class="margin-10px-top font-size14">2 KM WU <br> 6 KM Time Trail <br> 3 KM CD</div>
+                        <div class="font-size13 text-light-gray">Total 11 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">No
+                            Run Day</span>
+                        <div class="margin-10px-top font-size14">No Run Day</div>
+                        <div class="font-size13 text-light-gray">Total 0 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Long
+                            Run</span>
+                        <div class="margin-10px-top font-size14">21 KM Easy Pace</div>
+                        <div class="font-size13 text-light-gray">Total 21 KM</div>
+                    </td>
+                    <td class="bg-light-gray">
+                        <span
+                            class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Trekking
+                        </span>
+                        <div class="margin-10px-top font-size14">Total 3 KM</div>
+                        <div class="font-size13 text-light-gray">Total 3 KM</div>
+                    </td>
+                    <td>
+                        <span
+                            class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size14  xs-font-size13">Planned
+                            Total</span>
+                        <div class="margin-10px-top font-size14">51</div>
+                        <div class="font-size13 text-light-gray"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="table-responsive w-100 d-block d-md-table col-xs-3" style="margin-left: 0">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr class="bg-light-gray col">
+
+                        <th class="text-uppercase">Pace Info</th>
+                        <th class="text-uppercase"><a href="https://svedah.co.in/yourrunzone/">Please Navigate to this
+                                URL</a></th>
+
+                    </tr>
+                </thead>
+            </table>
+            <table class="table table-bordered text-center" style="margin: 0 auto; word-wrap: break-word;">
+                <thead>
+                    <tr class="bg-light-gray col">
+
+                        <th class="text-uppercase">Work Out Info</th>
+                        <th class="text-uppercase">Pace Info</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-light-gray col">
+                        <td class="text-uppercase"></td>
+                        <td> </td>
+                    </tr>
+                    <tr class="bg-light-gray col">
+                        <td class="text-uppercase">Intervals : </td>
+                        <td>{{interval_runs_result}}</td>
+                    </tr>
+                    <tr class="bg-light-gray col">
+                        <td class="text-uppercase">Strides : </td>
+                        <td> {{strides_runs_result}} </td>
+                    </tr>
+                    <tr class="bg-light-gray col">
+                        <td class="text-uppercase">Tempo : </td>
+                        <td>{{tempo_runs_result}}</td>
+                    </tr>
+                    <tr class="bg-light-gray col">
+                        <td class="text-uppercase">Easy : </td>
+                        <td> {{easy_runs_result}} </td>
+                    </tr>
+                    <tr class="bg-light-gray col">
+                        <td class="text-uppercase">Long Runs : </td>
+                        <td> {{long_runs_result}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td class="text-uppercase">Progressive Runs</td>
+                        <td>
+                            <table class="table-responsive w-100 d-block d-md-table col-xs-3">
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>level 1</td>
+                                        <td>Pace 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>level 2</td>
+                                        <td>Pace 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>level 3</td>
+                                        <td>Pace 3</td>
+                                    </tr>
+                                </tbody>
+                                </thead>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-uppercase">Fartlek 1</td>
+                        <td>
+                            <table class="table-responsive w-100 d-block d-md-table col-xs-3">
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>level 1</td>
+                                        <td>Pace 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>level 2</td>
+                                        <td>Pace 2</td>
+                                    </tr>
+
+                                </tbody>
+                                </thead>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-uppercase">Fartlek 2</td>
+                        <td>
+
+                            <table class="table-responsive w-100 d-block d-md-table col-xs-3">
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>level 1</td>
+                                        <td>Pace 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>level 2</td>
+                                        <td>Pace 2</td>
+                                    </tr>
+
+                                </tbody>
+                                </thead>
+                            </table>
+
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td class="text-uppercase">Moderate</td>
+                        <td> </td>
+                    </tr>
+                    <tr>
+                        <td class="text-uppercase">3k Pace</td>
+                        <td> </td>
+                    </tr>-->
+                    <tr>
+                        <td class="text-uppercase">Warm Up</td>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Exercise</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Light Jogging</td>
+                                        <td>Start with a slow, easy jog for 5-10 minutes to increase your heart rate and
+                                            warm up your muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Leg Swings</td>
+                                        <td>Swing each leg forward and backward and then side to side.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Arm Circles</td>
+                                        <td>Rotate your arms in small and large circles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hip Circles</td>
+                                        <td>Rotate your hips in a circular motion.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Acceleration Gliders</td>
+                                        <td>Gradually increase your pace over a short distance, focusing on your running
+                                            form.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Build-Ups</td>
+                                        <td>Gradually increase your speed over 50-100 meters, reaching near-sprint speed
+                                            without straining.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>High Knees</td>
+                                        <td>Stand tall and lift your knees towards your chest while jogging in place.
+                                            Focus on keeping a quick and light rhythm.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Butt Kicks</td>
+                                        <td>Jog in place while kicking your heels towards your glutes. Keep your knees
+                                            pointed towards the ground.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dynamic Lunges</td>
+                                        <td>Step forward with one foot into a lunge position. Alternate legs,
+                                            dynamically moving forward.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Skipping</td>
+                                        <td>Skip in place, lifting your knees as high as comfortable. Engage your arms
+                                            in a natural skipping motion.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A-Skips</td>
+                                        <td>Lift your knee and drive it forward while hopping on the opposite foot.
+                                            Emphasize driving the knee up towards your chest.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bounding</td>
+                                        <td>Take exaggerated, powerful strides while running. Focus on covering as much
+                                            ground as possible with each stride.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Carioca</td>
+                                        <td>Cross one foot over the other while moving laterally. Alternate the
+                                            direction to engage different muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Frankenstein Walks</td>
+                                        <td>Extend your leg straight in front of you, aiming to touch your hand. Walk
+                                            forward with alternating legs.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ankle Rolls</td>
+                                        <td>Lift one foot and rotate your ankle clockwise and then counterclockwise.
+                                            Switch to the other foot.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-uppercase">Cool Down</td>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Exercise</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Slow Jogging</td>
+                                        <td>Finish your run with a slow, easy jog to gradually decrease your heart rate
+                                            and cool down your muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Static Stretching</td>
+                                        <td>Hold stretches for major muscle groups, including hamstrings, quadriceps,
+                                            calves, and hip flexors. Hold each stretch for 15-30 seconds.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Deep Breathing</td>
+                                        <td>Practice deep, diaphragmatic breathing to promote relaxation and reduce
+                                            tension in your muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Legs Up the Wall</td>
+                                        <td>Lie on your back with your legs extended up against a wall. This helps
+                                            promote blood circulation and reduces muscle fatigue.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Seated Forward Bend</td>
+                                        <td>Sit with your legs extended in front of you and reach towards your toes,
+                                            stretching your hamstrings and lower back.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Child's Pose</td>
+                                        <td>Kneel on the ground, sit back on your heels, and stretch your arms forward.
+                                            This stretches your back, shoulders, and hips.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Calf Stretch</td>
+                                        <td>Stand near a wall, place one foot behind you, and lean forward to stretch
+                                            your calf muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Neck Stretch</td>
+                                        <td>Gently tilt your head to each side, forward, and backward to release tension
+                                            in your neck muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Side Stretch</td>
+                                        <td>Stand or sit and reach one arm overhead, leaning to the opposite side to
+                                            stretch your lateral muscles.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quadriceps Stretch</td>
+                                        <td>Stand on one leg, bring your other foot towards your buttocks, and gently
+                                            pull your foot towards your glutes to stretch your quadriceps.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>
