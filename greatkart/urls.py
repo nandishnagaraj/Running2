@@ -33,4 +33,5 @@ urlpatterns = [
     path('yourrunzone/', TemplateView.as_view(template_name='yourrunzone.html'), name='yourrunzone'),
     path('smitha/', TemplateView.as_view(template_name='smitha.html'), name='smitha'),
     path('pranesh/', TemplateView.as_view(template_name='pranesh.html'), name='pranesh'),
+    path('nandish/', TemplateView.as_view(template_name='nandish.html'), name='nandish'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
